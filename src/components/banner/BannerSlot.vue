@@ -32,26 +32,26 @@
     </div>
     <div class='slot-brocast' v-if='item.title=="直播"'>
         <div class='brocast-slot-left'>
-            <div>直播：</div>
+            <h3>直播：</h3>
             <div class='brocast-slot-items'>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
-                <div><img  src='#'/></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
+                <div><a href='#'><img  src='../../assets/images/banHover_02_01_2.png'/><p>武帝官邸</p></a></div>
             </div>
         </div>
         <div class='brocast-slot-right'>
-            <div>热门活动：</div>
-            <div><img src='#'></div>
-            <div><img src='#'></div>
+            <h3>热门活动：</h3>
+            <div><a href='#'><img src='../../assets/images/banHover_02_01_1.png'></a></div>
+            <div><a href='#'><img src='../../assets/images/banHover_02_01_1.png'></a></div>
         </div>
     </div>
     <div class='slot-saoma' v-if='item.title=="下载App"'>
-        <div><img src='#'></div>
+        <div></div>
     </div>   
 </div>                  
 </template>
@@ -116,21 +116,52 @@ export default {
     align-items: space-between;
     background-color: #fff;
 }
+.slot-brocast h3 {
+    text-align: left;
+    margin-bottom: 10px;
+    color: #ea759f;
+}
 .brocast-slot-left {
-    width: 254px;
+    width: 290px;
     height: 100%;
 }
 .brocast-slot-items {
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    width: 45px;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.brocast-slot-items > div {
+    margin-right: 4px;
+    margin-bottom: 30px;
+    width: 65px;
     height: 70px;
 }
-.brocast-slot-left {
-    width: 200px;
-    height: 100%;
+.brocast-slot-items p {
+    margin-top: 4px;
+}
+.brocast-slot-right div {
+    margin-bottom: 14px;
 }
 .slot-saoma {
     background-color: #fff;
+}
+.slot-saoma div {
+    position: absolute;
+    left: -20px;
+    top: 42px;
+    width: 259px;
+    height: 174px;
+    background: url(../../assets/images/app-box.png);
+}
+.slot-saoma div::before {
+    content: "";
+    position: absolute;
+    width: 97px;
+    height: 97px;
+    left: 82px;
+    top: 30px;
+    background: url(../../assets/images/app-qrcode.png);
 }
 </style>
