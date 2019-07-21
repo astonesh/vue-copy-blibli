@@ -41,7 +41,6 @@ export default {
 					item.isShowTag = false;
 				})
 			}
-			console.log(this.dataList);
 		},
 		toggle: function($index) {
 			// console.log(JSON.parse($index));

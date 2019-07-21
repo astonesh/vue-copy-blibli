@@ -56,7 +56,7 @@
     <div class='slot-login' v-if='item.title=="login"' ref='slot-login'>
         <p>你登陆以后可以：</p>
         <div>
-            <img src='../../assets/images/danmu.png' ref='firImage'>
+            <img src='../../assets/images/danmu.png' ref='firImage' class='firImage'>
             <img src='../../assets/images/danmu.png' ref='secImage'>
         </div>
         <a>登陆</a>
@@ -67,11 +67,19 @@
         <div>没有数据哦,多看点视频吧~</div>
         <a class='more'>查看更多 ></a>
     </div>
+    <div class='slot-add' v-if='item.title=="投稿"'>
+        <ul>
+            <li><a><i></i><span>音频投稿</span></a></li>
+            <li><a><i></i><span>音频投稿</span></a></li>
+            <li><a><i></i><span>音频投稿</span></a></li>
+            <li><a><i></i><span>音频投稿</span></a></li>
+            <li><a><i></i><span>音频投稿</span></a></li>
+        </ul>
+    </div>
 </div>                  
 </template>
 
 <script>
-import { setInterval, setTimeout } from 'timers';
 export default {
     data() {
         return {
@@ -80,33 +88,35 @@ export default {
         }
     },
     props: ['item'],
-    // methods: {
-    //     intervalChange: function() {
-    //         this.$refs['firImage'].style.left-=4;
-    //         this.$refs['secImage'].style.left-=4;
-    //         if(this.$refs['firImage'].style.left == -320) {
-    //             this.$refs['firImage'].style.left = 320;
-    //         }
-    //         if(this.$refs['secImage'].style.left == -320) {
-    //             this.$refs['secImage'].style.left = 320;
-    //         }
-    //     },
-    //     createTimer: function () {
-    //         if(!timer) {
-    //             timer = setTimeout(function() {
-    //                 this.intervalChange();
-    //                 this.createTimer();
-    //             }, 40)
-    //         }
-    //     }
-    // },
-    // beforeMount: function () {
-    //     this.createTimer();
-    // }
+    methods: {
+        intervalChange: function() {
+            debugger
+            console.log(this.$refs['firImage'].style.left);
+            this.$refs['firImage'].style.left-=4;
+            this.$refs['secImage'].style.left-=4;
+            if(this.$refs['firImage'].style.left == -320) {
+                this.$refs['firImage'].style.left = 320;
+            }
+            if(this.$refs['secImage'].style.left == -320) {
+                this.$refs['secImage'].style.left = 320;
+            }
+        },
+        createTimer: function () {
+            if(!this.timer) {
+                this.timer = setTimeout(function() {
+                    this.intervalChange();
+                    this.createTimer();
+                }, 40)
+            }
+        }
+    },
+    Mounted () {
+        console.log(2);
+        this.createTimer();
+    }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
 @import './BannerSlot.css';
 </style>

@@ -89,6 +89,9 @@ export default {
     components: {
         BannerItem,
         BannerSlot
+    },
+    mounted() {
+        console.log(1)
     }
 }
 </script>

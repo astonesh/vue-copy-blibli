@@ -174,3 +174,22 @@
     border-radius: 4px;
     
 }
+.slot-add {
+    width: 320px;
+    height: 64px;
+}
+.banner-slot-add ul {
+    display: flex;
+}
+.banner-slot-add ul li {
+    width: 68px;
+    height: 64px;
+}
+.banner-slot-add ul li i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../../assets/images/icons.png) -471px -919px no-repeat;
+    margin: 15px auto 2px;
+    transition: .2s;
+}

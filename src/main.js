@@ -21,5 +21,3 @@ var vm = new Vue({
   components: { App },
   template: '<App/>'
 })
-
-console.log(Vue.prototype)

@@ -1,10 +1,10 @@
 <template>
-<li v-bind:class='classes' v-on:mouseenter="isShowSlot = !isShowSlot" v-on:mouseleave="isShowSlot = !isShowSlot">
+<li v-bind:class='classes' v-on:mouseenter="toggleSlot()" v-on:mouseleave="toggleSlot()">
     <a v-bind:href="null"  v-bind:title='item.title' class='menu-item'>
        <i v-if='item.isShowPic && item.title !== "login"'></i><span v-if='item.title !="login"'>{{item.title}}</span>
        <span v-if='item.title == "login"' class='login_image'><img src='../../assets/images/akari.jpg' ></span>
     </a>
-    <div v-show='isShowSlot' class='banner-slot' v-bind:class = '{"banner-slot-login": item.title=="login", "banner-slot-his": item.title=="历史", "banner-slot-add": item.title=="投稿"}'><slot></slot></div>   
+    <div ref='slot' v-show='isShowSlot' class='banner-slot' v-bind:class = '{"banner-slot-login": item.title=="login", "banner-slot-his": item.title=="历史", "banner-slot-add": item.title=="投稿"}'><slot ></slot></div>   
 </li>
 </template>
 
@@ -22,7 +22,18 @@ export default {
             isShowSlot: false
         }
     },
+    methods: {
+        toggleSlot() {
+            this.isShowSlot = !this.isShowSlot;
+            if(this.item.title == 'login') {
+                debugger
+                console.log(this.$refs.slot.querySelector('.firImage').style.left);
+            }
+        }
+    },
     props: ['item'],
+    mounted() {
+    }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -91,5 +102,9 @@ li:hover {
 .banner-slot.banner-slot-his {
     position: relative;
     left: -234px;
+}
+.banner-slot.banner-slot-add {
+    position: relative;
+    left: -170px;
 }
 </style>
