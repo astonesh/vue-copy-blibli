@@ -52,116 +52,61 @@
     </div>
     <div class='slot-saoma' v-if='item.title=="下载App"'>
         <div></div>
-    </div>   
+    </div>
+    <div class='slot-login' v-if='item.title=="login"' ref='slot-login'>
+        <p>你登陆以后可以：</p>
+        <div>
+            <img src='../../assets/images/danmu.png' ref='firImage'>
+            <img src='../../assets/images/danmu.png' ref='secImage'>
+        </div>
+        <a>登陆</a>
+        <p>首次登陆？<span>点我注册</span></p>
+    </div>
+    <div class='slot-his' v-if='item.title=="历史"'>
+        <div><p>登陆以后有更多功能~</p><a href='#'>登陆</a></div>
+        <div>没有数据哦,多看点视频吧~</div>
+        <a class='more'>查看更多 ></a>
+    </div>
 </div>                  
 </template>
 
 <script>
+import { setInterval, setTimeout } from 'timers';
 export default {
     data() {
         return {
+            count: 0,
+            timer: null,
         }
     },
-    props: ['item']
+    props: ['item'],
+    // methods: {
+    //     intervalChange: function() {
+    //         this.$refs['firImage'].style.left-=4;
+    //         this.$refs['secImage'].style.left-=4;
+    //         if(this.$refs['firImage'].style.left == -320) {
+    //             this.$refs['firImage'].style.left = 320;
+    //         }
+    //         if(this.$refs['secImage'].style.left == -320) {
+    //             this.$refs['secImage'].style.left = 320;
+    //         }
+    //     },
+    //     createTimer: function () {
+    //         if(!timer) {
+    //             timer = setTimeout(function() {
+    //                 this.intervalChange();
+    //                 this.createTimer();
+    //             }, 40)
+    //         }
+    //     }
+    // },
+    // beforeMount: function () {
+    //     this.createTimer();
+    // }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-.slot-contain {
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
-}
-.slot-game {
-    display: flex;
-    width: 400px;
-    padding: 6px 10px;
-    align-items: space-between;
-    background-color: #fff;
-}
-.game-slot-left {
-    width: 300px;
-    height: 100%;
-}
-.game-slot-right {
-    width: 100px;
-    height: 100%;
-    padding: 0 10px;
-}
-.game-slot-left_bottomImg {
-    display: flex;
-    justify-content: space-around;
-    margin: 8px 0px;
-}
-.game-slot-left_bottomImg p {
-    margin: 10px 0 30px 0;
-}
-.game-slot-right ul {
-    padding: 14px 6px;
-    height: 180px;
-    border-left: 2px solid rgba(0, 0, 0, .1);
-    position: relative;
-    left: 6px;
-    top: -6px;
-    text-align: left;
-}
-.game-slot-right ul li {
-    height: 33px;
-    line-height: 33px;
-}
-.slot-brocast {
-    display: flex;
-    width: 504px;
-    height: 222px;
-    padding: 20px 0 20px 20px;
-    align-items: space-between;
-    background-color: #fff;
-}
-.slot-brocast h3 {
-    text-align: left;
-    margin-bottom: 10px;
-    color: #ea759f;
-}
-.brocast-slot-left {
-    width: 290px;
-    height: 100%;
-}
-.brocast-slot-items {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.brocast-slot-items > div {
-    margin-right: 4px;
-    margin-bottom: 30px;
-    width: 65px;
-    height: 70px;
-}
-.brocast-slot-items p {
-    margin-top: 4px;
-}
-.brocast-slot-right div {
-    margin-bottom: 14px;
-}
-.slot-saoma {
-    background-color: #fff;
-}
-.slot-saoma div {
-    position: absolute;
-    left: -20px;
-    top: 42px;
-    width: 259px;
-    height: 174px;
-    background: url(../../assets/images/app-box.png);
-}
-.slot-saoma div::before {
-    content: "";
-    position: absolute;
-    width: 97px;
-    height: 97px;
-    left: 82px;
-    top: 30px;
-    background: url(../../assets/images/app-qrcode.png);
-}
+@import './BannerSlot.css';
 </style>

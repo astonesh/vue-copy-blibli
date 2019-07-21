@@ -10,7 +10,10 @@
         </div>
         <div class="top-contain-right">
             <ul>
-                <banner-item v-for='item in rightTitle' :key="item.title" v-bind:item='item'></banner-item>
+                <banner-item v-for='item in rightTitle' :key="item.title" v-bind:item='item'>
+                    <banner-slot v-bind:item='item'></banner-slot>
+                </banner-item>
+                
             </ul>
         </div>
     </div>
@@ -66,7 +69,7 @@ export default {
                 },
             ],
             rightTitle: [{
-                    'title': '',
+                    'title': 'login',
                     isShowPic: true,
                     isHightLight: false
                 },

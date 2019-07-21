@@ -1,0 +1,176 @@
+.slot-contain {
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+}
+.slot-game {
+    display: flex;
+    width: 400px;
+    padding: 6px 10px;
+    align-items: space-between;
+    background-color: #fff;
+}
+.game-slot-left {
+    width: 300px;
+    height: 100%;
+}
+.game-slot-right {
+    width: 100px;
+    height: 100%;
+    padding: 0 10px;
+}
+.game-slot-left_bottomImg {
+    display: flex;
+    justify-content: space-around;
+    margin: 8px 0px;
+}
+.game-slot-left_bottomImg p {
+    margin: 10px 0 30px 0;
+}
+.game-slot-right ul {
+    padding: 14px 6px;
+    height: 180px;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    position: relative;
+    left: 6px;
+    top: -6px;
+    text-align: left;
+}
+.game-slot-right ul li {
+    height: 33px;
+    line-height: 33px;
+}
+.slot-brocast {
+    display: flex;
+    width: 504px;
+    height: 222px;
+    padding: 20px 0 20px 20px;
+    align-items: space-between;
+    background-color: #fff;
+}
+.slot-brocast h3 {
+    text-align: left;
+    margin-bottom: 10px;
+    color: #ea759f;
+}
+.brocast-slot-left {
+    width: 290px;
+    height: 100%;
+}
+.brocast-slot-items {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.brocast-slot-items > div {
+    margin-right: 4px;
+    margin-bottom: 30px;
+    width: 65px;
+    height: 70px;
+}
+.brocast-slot-items p {
+    margin-top: 4px;
+}
+.brocast-slot-right div {
+    margin-bottom: 14px;
+}
+.slot-saoma {
+    background-color: #fff;
+}
+.slot-saoma div {
+    position: absolute;
+    left: -20px;
+    top: 42px;
+    width: 259px;
+    height: 174px;
+    background: url(../../assets/images/app-box.png);
+}
+.slot-saoma div::before {
+    content: "";
+    position: absolute;
+    width: 97px;
+    height: 97px;
+    left: 82px;
+    top: 30px;
+    background: url(../../assets/images/app-qrcode.png);
+}
+.slot-login {
+    display: inline-block;
+    width: 330px;
+    position: relative;
+}
+.slot-login div {
+    position: relative;
+    left: 0px;
+    overflow: hidden;
+    margin: 0 5px;
+    width: 320px;
+    height: 200px;
+    background: url(../../assets/images/danmu_base.png) no-repeat;
+}
+.slot-login div img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.slot-login div img.sec-image {
+    left: 320px;
+}
+.slot-login p:first-child {
+    margin: 10px 8px;
+    text-align: left;
+    color: #6d757a;
+}
+.slot-login a {
+    display: inline-block;
+    width: 320px;
+    height: 30px;
+    margin: 10px 5px;
+    background: #00a1d6;
+    line-height: 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.slot-login p:last-child {
+    margin: 10px 8px;
+    text-align: left;
+    color: #6d757a;
+}
+.slot-login p:last-child span {
+    color: #00a1d6;
+}
+.slot-his {
+    width: 402px;
+    height: 180px;
+}
+.slot-his div:first-child {
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+}
+.slot-his div:first-child p {
+    margin: 60px auto 10px;
+}
+.slot-his div:first-child a {
+    display: inline-block;
+    margin: 0 auto;
+    background: #00a1d6;
+    padding: 5px 11px;
+    color: #fff;
+    border-radius: 4px;
+}
+.slot-his div:last-child {
+    color: #ddd;
+}
+.slot-his .more {
+    display: inline-block;
+    background: #e5e9ef;
+    width: 390px;
+    margin: 10px auto;
+    padding: 6px 0;
+    border-radius: 4px;
+    
+}

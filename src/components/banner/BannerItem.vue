@@ -1,9 +1,10 @@
 <template>
 <li v-bind:class='classes' v-on:mouseenter="isShowSlot = !isShowSlot" v-on:mouseleave="isShowSlot = !isShowSlot">
     <a v-bind:href="null"  v-bind:title='item.title' class='menu-item'>
-       <i v-if='item.isShowPic'></i> {{item.title}}
+       <i v-if='item.isShowPic && item.title !== "login"'></i><span v-if='item.title !="login"'>{{item.title}}</span>
+       <span v-if='item.title == "login"' class='login_image'><img src='../../assets/images/akari.jpg' ></span>
     </a>
-    <div v-show='isShowSlot' class='banner-slot'><slot></slot></div>   
+    <div v-show='isShowSlot' class='banner-slot' v-bind:class = '{"banner-slot-login": item.title=="login", "banner-slot-his": item.title=="历史", "banner-slot-add": item.title=="投稿"}'><slot></slot></div>   
 </li>
 </template>
 
@@ -50,6 +51,15 @@ a i {
 .i-show-home a i,.i-show-phone a i {
     background: url(../../assets/images/icons.png) -853px -82px no-repeat;
 }
+.menu-item .login_image {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+}
+.menu-item .login_image img {
+    width: 42px;
+    height: 42px;
+}
 li.highLight {
     height: 46px;
     border-radius: 0 0 6px 6px;
@@ -72,5 +82,14 @@ li:hover {
 }
 .banner-slot {
     display: inline-block;
+}
+.banner-slot.banner-slot-login {
+    position: relative;
+    left: -62px;
+    top: -15px;
+}
+.banner-slot.banner-slot-his {
+    position: relative;
+    left: -234px;
 }
 </style>
