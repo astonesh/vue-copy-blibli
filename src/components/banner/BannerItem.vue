@@ -1,5 +1,5 @@
 <template>
-<li v-bind:class='classes' v-on:mouseenter="toggleSlot()" v-on:mouseleave="toggleSlot()">
+<li v-bind:class='classes' v-on:mouseenter="toggleSlot()" v-on:mouseleave="toggleSlot()" ref='li-lists'>
     <a v-bind:href="null"  v-bind:title='item.title' class='menu-item'>
        <i v-if='item.isShowPic && item.title !== "login"'></i><span v-if='item.title !="login"'>{{item.title}}</span>
        <span v-if='item.title == "login"' class='login_image'><img src='../../assets/images/akari.jpg' ></span>
@@ -25,15 +25,9 @@ export default {
     methods: {
         toggleSlot() {
             this.isShowSlot = !this.isShowSlot;
-            if(this.item.title == 'login') {
-                debugger
-                console.log(this.$refs.slot.querySelector('.firImage').style.left);
-            }
         }
     },
     props: ['item'],
-    mounted() {
-    }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

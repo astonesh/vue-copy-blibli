@@ -89,15 +89,10 @@ export default {
     components: {
         BannerItem,
         BannerSlot
-    },
-    mounted() {
-        console.log(1)
     }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style scoped>
 .top-bar {
     height: 42px;

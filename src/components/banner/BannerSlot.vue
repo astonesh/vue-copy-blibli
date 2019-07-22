@@ -55,9 +55,9 @@
     </div>
     <div class='slot-login' v-if='item.title=="login"' ref='slot-login'>
         <p>你登陆以后可以：</p>
-        <div>
-            <img src='../../assets/images/danmu.png' ref='firImage' class='firImage'>
-            <img src='../../assets/images/danmu.png' ref='secImage'>
+        <div v-on:mouseenter='try09()'  ref='img-div' v-on:mouseleave ='clear09()'>
+            <img src='../../assets/images/danmu.png' ref='firImage' style='left: 0px;'>
+            <img src='../../assets/images/danmu.png' ref='secImage' style='left: 320px;'>
         </div>
         <a>登陆</a>
         <p>首次登陆？<span>点我注册</span></p>
@@ -78,8 +78,8 @@
     </div>
 </div>                  
 </template>
-
 <script>
+import { setInterval, clearInterval } from 'timers';
 export default {
     data() {
         return {
@@ -90,29 +90,33 @@ export default {
     props: ['item'],
     methods: {
         intervalChange: function() {
-            debugger
-            console.log(this.$refs['firImage'].style.left);
-            this.$refs['firImage'].style.left-=4;
-            this.$refs['secImage'].style.left-=4;
-            if(this.$refs['firImage'].style.left == -320) {
-                this.$refs['firImage'].style.left = 320;
+            this.$refs['firImage'].style.left = this.countNum(this.$refs['firImage'].style.left, 10);
+            this.$refs['secImage'].style.left = this.countNum(this.$refs['secImage'].style.left, 10);
+            if(this.$refs['firImage'].style.left == '-320px') {
+                this.$refs['firImage'].style.left = '320px';
             }
-            if(this.$refs['secImage'].style.left == -320) {
-                this.$refs['secImage'].style.left = 320;
+            if(this.$refs['secImage'].style.left == '-320px') {
+                this.$refs['secImage'].style.left= '320px';
             }
         },
         createTimer: function () {
-            if(!this.timer) {
-                this.timer = setTimeout(function() {
-                    this.intervalChange();
-                    this.createTimer();
-                }, 40)
+            // debugger
+            let self = this;
+            this.timer = setInterval(() => {
+                this.intervalChange()
+            }, 40)
+        },
+        try09: function () {
+            this.createTimer();
+        },
+        clear09: function () {
+            if(this.timer) {
+                clearInterval(this.timer);
             }
+        },
+        countNum: function (str, num) {
+            return (parseInt(str.split('px')[0]) - num) + 'px';
         }
-    },
-    Mounted () {
-        console.log(2);
-        this.createTimer();
     }
 }
 </script>

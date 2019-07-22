@@ -111,11 +111,8 @@
 }
 .slot-login div img {
     position: absolute;
-    left: 0px;
+    /* left: 0px; */
     top: 0px;
-}
-.slot-login div img.sec-image {
-    left: 320px;
 }
 .slot-login p:first-child {
     margin: 10px 8px;
