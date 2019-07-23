@@ -1,11 +1,25 @@
-import Vue from 'vue';
-export default new Vue({});
+// export default (Vue)=>{
+// 	Vue.prototype.copy = function(item) {
+// 		return JSON.parse(JSON.stringify(item));
+// 	};
+// }
 
-const tool = {
-	// parse: JSON.parse,
-	// stringify: JSON.stringify,
-	copy: function(item) {
-		return JSON.parse(JSON.stringify(item))
+export default {
+	// install方法是必需的
+	// 包含两个参数：Vue 构造器，一个可选的选项对象
+	install(Vue, options) {
+		// 使用minxin将功能注入所有组件
+		// Vue.mixin({
+		// // 添加到mixin中的任何内容将被注入到所有组件中。
+		// //在这个例子中， mounted() 方法将在组件被挂载到DOM后调用
+		// mounted() {
+		//   console.log('Mounted!');
+		// }
+		Vue.prototype.copy = function(item) {
+			return JSON.parse(JSON.stringify(item));
+		},
+		Vue.prototype.copyll = function(item) {
+			return JSON.parse(JSON.stringify(item));
+		} 
 	}
-}
-export { tool };
+};
