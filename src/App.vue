@@ -6,6 +6,7 @@
       <sub-title></sub-title>
       <!-- <div><router-view /></div> -->
     </div>
+    <common></common>
     
 </div>
 </template>
@@ -14,13 +15,15 @@
 import TopBar from './components/banner/TopBar';
 import SearchContain from './components/searchContain/SearchContain';
 import SubTitle from './components/SubTitle/SubTitle';
+import Common from './components/common/Common';
 
 export default {
     name: 'App',
     components: {
       TopBar,
       SearchContain,
-      SubTitle
+      SubTitle,
+      Common
     },
     methods: {
       testMe: function() {
