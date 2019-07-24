@@ -1,15 +1,14 @@
 <template>
-  <div class='alert-box'>这是我的警告框！！</div>
+  <div class="alert-box">这是我的警告框！！</div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
-    name: 'myAlert',
-    data () {
-      return {
-      }
-    },
-    methods: {
+export default {
+  name: 'myAlert',
+  data () {
+    return {};
+  },
+  methods: {
     //   close () {
     //     this.visible = false
     //     this.$emit('close')
@@ -17,17 +16,16 @@
     //       this.onClose(this)
     //     }
     //   }
-    }
   }
+};
 </script>
 <style>
 .alert-box {
-    display: inline-block;
-    width: 200px;
-    height: 100px;
-    background: red;
-    text-align: center;
-    padding-top: 30px;
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  background: red;
+  text-align: center;
+  padding-top: 30px;
 }
 </style>
-

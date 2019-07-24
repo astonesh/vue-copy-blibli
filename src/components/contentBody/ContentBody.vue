@@ -1,17 +1,13 @@
 <template>
-    <div>111</div>
+  <div>111</div>
 </template>
 
 <script>
 export default {
-    name: 'ContentBody',
-    data() {
-        return {
-        }
-    },
-    components: {
-        BannerItem
-    }
-}
+  name: 'ContentBody',
+  data () {
+    return {};
+  },
+  components: {}
+};
 </script>
-

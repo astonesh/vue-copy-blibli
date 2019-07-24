@@ -1,14 +1,15 @@
 <template>
-<div id="app">
-    <div class="top-bar_position"><topBar></topBar></div>
+  <div id="app">
+    <div class="top-bar_position">
+      <topBar></topBar>
+    </div>
     <div class="content-body">
       <search-contain></search-contain>
       <sub-title></sub-title>
       <!-- <div><router-view /></div> -->
     </div>
     <common></common>
-    
-</div>
+  </div>
 </template>
 
 <script>
@@ -18,18 +19,18 @@ import SubTitle from './components/SubTitle/SubTitle';
 import Common from './components/common/Common';
 
 export default {
-    name: 'App',
-    components: {
-      TopBar,
-      SearchContain,
-      SubTitle,
-      Common
-    },
-    methods: {
-      testMe: function() {
-        console.log('111');
-      }
+  name: 'App',
+  components: {
+    TopBar,
+    SearchContain,
+    SubTitle,
+    Common
+  },
+  methods: {
+    testMe () {
+      console.log('111');
     }
+  }
 }
 </script>
 
