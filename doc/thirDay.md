@@ -9,5 +9,4 @@
 vue 里面 config[useEslint] 默认开启 eslint-loader[eslint-friendly-formatter] 模式  可以关掉
 用 npm run lint 自定义检查语法
 https://juejin.im/post/5aeddf14f265da0b736d8a66
-第四：router实现
 
