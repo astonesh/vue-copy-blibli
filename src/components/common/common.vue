@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='common-div'>
         <my-alert></my-alert>
     </div>
 </template>
@@ -11,8 +11,10 @@ export default {
     }
 }
 </script>
-<style>
-
+<style scope>
+.common-div {
+    margin-top: -200px;
+}
 </style>
 
 

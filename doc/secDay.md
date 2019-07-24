@@ -1,3 +1,4 @@
+对应searchContain
 第一： stylus 如何支持
 check-version 对npm版本进行检查
 config 通过index 暴露出 dev 和 build 的具体参数

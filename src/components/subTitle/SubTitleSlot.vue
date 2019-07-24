@@ -1,13 +1,47 @@
 <template>
 	<div class='slot-contain'>
-		<ul v-for='(list, index) in dataList.items' :key='index' v-if='dataList.items'>
-			<li v-on:mouseenter='toggle(index)' v-on:mouseleave='toggle(index)'>
-				<a :href='list.itemUrl'>
-					<span class='myAnimation'>><span class='esp-span'>{{list.item}}</span></span>
-					<span><</span>
-				</a>
-			</li>
-		</ul>
+		<div v-if='dataList.items && dataList.slotValue ==2' class='slot-contain-one'>
+			<ul v-for='(list, index) in dataList.items' :key='index' >
+				<li v-on:mouseenter='toggle(index)' v-on:mouseleave='toggle(index)'>
+					<a :href='list.itemUrl' class='slot-item_a'>
+						<span class='myAnimation_left'><em>></em>{{list.item}}</span>
+						<span class='myAnimation_right'><<em v-show='list.isShowTag'>></em></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div v-if='dataList.slotValue == 3 && dataList.isShowSlot'>
+			<div class='ground' v-if='dataList.id == 18'>
+				<div class='ground-left'>
+					<ul>
+						<li class='one'><a><i></i>会员购</a></li>
+						<li class='two'><a><i></i>游戏中心</a></li>
+						<li class='thr'><a><i></i>画友</a></li>
+						<li class='for'><a><i></i>芒果TV</a></li>
+					</ul>
+				</div>
+				<div class='ground-right'>
+					<div><a><img src='../../assets/images/ground-one.jpg'></a></div>
+					<div><a><img src='../../assets/images/ground-two.jpg'></a></div>
+				</div>
+			</div>
+			<div class='ground' v-if='dataList.id == 19'>
+				<div class='ground-left'>
+					<ul>
+						<li><a><i>></i>全部直播</a></li>
+						<li><a><i>></i>游戏直播</a></li>
+						<li><a><i>></i>手游直播</a></li>
+						<li><a><i>></i>娱乐直播</a></li>
+						<li><a><i>></i>电台直播</a></li>
+						<li><a><i>></i>绘画直播</a></li>
+					</ul>
+				</div>
+				<div class='ground-right'>
+					<div><a><img src='../../assets/images/ground-one.jpg'></a></div>
+					<div><a><img src='../../assets/images/ground-two.jpg'></a></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -43,33 +77,46 @@ export default {
 			}
 		},
 		toggle: function($index) {
-			// console.log(JSON.parse($index));
-			// let itemTemp = {
-			// 		item: this.dataList.items[$index].item,
-			// 		itemUrl: this.dataList.items[$index].itemUrl,
-			// 		isShowTag: !this.dataList.items[$index].isShowTag,
-			// 	}
-			// this.dataList.items.splice($index, 1 , itemTemp);
+			// 第一种方法
+			let itemTemp = {
+					item: this.dataList.items[$index].item,
+					itemUrl: this.dataList.items[$index].itemUrl,
+					isShowTag: !this.dataList.items[$index].isShowTag,
+				}
+			this.dataList.items.splice($index, 1 , itemTemp);
+			//第二种方法
 			// var a = this.dataList;
 			// this.dataList.items[$index].isShowTag = !this.dataList.items[$index].isShowTag;
 			// this.datalist = this.copy(this.dataList);
 			// console.log(this.datalist);
 			// console.log(this.datalist == a);
 		}
+	},
+	watch: {
+		'dataList.items': {
+			handler: function(n, o) {
+				// console.log(n);
+			},
+			deep: true,
+			immediate: true
+		}
 	}
 }
 </script>
 <style scoped>
 	.slot-contain {
+		background-color: #fff;
+	}
+	.slot-contain-one {
 		position: relative;
 		margin-left: -6px;
-		width: 140px;
-		background-color: #fff;
-		padding: 10px 8px;
+		margin-top: 4px;
+		width: 130px;	
+		box-shadow: 0 2px 4px rgba(0,0,0,.16);
 	}
-	ul, li {
+	.slot-contain-one ul, .slot-contain-one .li {
 		width: 100%;
-		background: red;
+		background:#fff;
 		overflow: hidden;
 	}
 	ul li {
@@ -77,31 +124,77 @@ export default {
 		height: 30px;
 		text-align: left;
 		line-height: 30px;
+		padding: 0 6px;
+		overflow: hidden;
 	}
-	ul li:hover {
-		padding-left: 8px;
-		background-color: grey;
-	}
-	li a {
-		display: flex;
-		justify-content: flex-start;
-	}
-	li a > span {
-		padding-right: 6px;
-		padding-left: 6px;
+	.myAnimation_left em {
+		padding-right: 8px;
 		color: #00a1d6;
 	}
-	.esp-span {
-		padding-left: 6px;
+	.slot-item_a .myAnimation_right {
+		margin-left: 100px;
+		color: #00a1d6;
 	}
-	ul a > span.myAnimation {
-		padding-right: 126px;
+	.slot-item_a:hover .myAnimation_right {
+		margin-left: 6px;
+		transition: margin-left 0.4s;
 	}
-	ul a:hover span.myAnimation {
-		animation: mymove 1s;
+	.slot-contain-one ul li:hover {
+		padding-left: 12px;
+		background-color: rgba(0,0,0,.16);
+		transition: padding-left 0.4s;
 	}
-	@keyframes mymove {
-		from { padding-right: 126px;}
-		to { padding-right: 10px;}
+	.ground {
+		display: flex;
+		width: 387px;
+		height: 228px;
+		padding: 20px 0;
+		justify-content: space-between;
+		box-shadow: 0 2px 4px rgba(0,0,0,.16);
+	}
+	.ground-left {
+		width: 107px;
+		height: 100%;
+		border-right: 1px solid #ddd;
+	}
+	.ground-right {
+		width: 280px;
+		height: 100%;
+	}
+	.ground-left li {
+		padding: 0 40px 0 20px;
+	}
+	.ground-left li:hover {
+		background: #e5e9ef;
+	}
+	.ground-left li i {
+		display: inline-block;
+		position: relative;
+		width: 16px;
+		height: 13px;
+		top: 2px;
+		left: -2px;
+		color: #00a1d6;
+	}
+	.ground-left li a {
+		display: inline-block;
+    	width: 80px;
+	}
+	.one i {
+		background: url(../../assets/images/icon-pc.png) no-repeat;
+	}
+	.two i {
+		background: url(../../assets/images/icons.png) -279px -1241px no-repeat;
+	}
+	.thr i {
+		background: url(../../assets/images/icons.png) -280px -1370px no-repeat;
+	}
+	.for i {
+		background: url(../../assets/images/icons.png) -280px -1433px no-repeat;
+	}
+	.ground-right div {
+		width: 240px;
+		margin-left: 20px;
+		margin-bottom: 20px;
 	}
 </style>
