@@ -4,19 +4,11 @@
 
 <script type="text/ecmascript-6">
 export default {
-  name: 'myAlert',
+  name: 'myMask',
   data () {
     return {};
   },
-  methods: {
-    //   close () {
-    //     this.visible = false
-    //     this.$emit('close')
-    //     if (typeof this.onClose === 'function') {
-    //       this.onClose(this)
-    //     }
-    //   }
-  }
+  props: []
 };
 </script>
 <style>

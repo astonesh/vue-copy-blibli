@@ -1,36 +1,28 @@
 <template>
-<div id="app">
-    <div class="top-bar_position"><topBar></topBar></div>
-    <div class="content-body">
-      <search-contain></search-contain>
-      <sub-title></sub-title>
-      <!-- <div><router-view /></div> -->
+  <div id="app">
+    <div class="top-bar_position">
+      <topBar></topBar>
     </div>
-    <common></common>
-    
-</div>
+    <div class="main-content">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
 import TopBar from './components/banner/TopBar';
-import SearchContain from './components/searchContain/SearchContain';
-import SubTitle from './components/SubTitle/SubTitle';
-import Common from './components/common/Common';
 
 export default {
-    name: 'App',
-    components: {
-      TopBar,
-      SearchContain,
-      SubTitle,
-      Common
-    },
-    methods: {
-      testMe: function() {
-        console.log('111');
-      }
+  name: 'App',
+  components: {
+    TopBar
+  },
+  methods: {
+    testMe () {
+      console.log('111');
     }
-}
+  }
+};
 </script>
 
 <style>
@@ -43,10 +35,13 @@ export default {
 .content-body {
   width: 100%;
   margin: auto;
+  z-index: 98;
 }
 .top-bar_position {
   width: 100%;
   position: absolute;
-  z-index: 99;
+  z-index: 99999;
+  top: 0;
+  font-size: 14px;
 }
 </style>

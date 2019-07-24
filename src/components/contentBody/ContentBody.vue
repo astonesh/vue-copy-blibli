@@ -1,17 +1,43 @@
 <template>
-    <div>111</div>
+  <div>
+    <div class="content-body">
+      <search-contain></search-contain>
+      <sub-title></sub-title>
+    </div>
+    <common></common>
+    <div class="swiper-body">
+      <router-view></router-view>
+      <!-- <swiper-contain></swiper-contain> -->
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-    name: 'ContentBody',
-    data() {
-        return {
-        }
-    },
-    components: {
-        BannerItem
-    }
-}
-</script>
+import SearchContain from '../searchContain/SearchContain';
+import SubTitle from '../SubTitle/SubTitle';
+import Common from '../common/Common';
+import SwiperContain from '../for/SwiperContain';
 
+export default {
+  name: 'ContentBody',
+  data () {
+    return {};
+  },
+  components: {
+    SearchContain,
+    SubTitle,
+    Common,
+    SwiperContain
+  }
+};
+</script>
+<style>
+.swiper-body {
+  padding-top: 70px;
+  width: 980px;
+  display: inline-block;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 90;
+}
+</style>

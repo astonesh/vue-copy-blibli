@@ -19,16 +19,16 @@
 //   })
 // }
 
-export default{
-  install(Vue, options) {
-    Vue.directive("focus",{
-      inserted: function(el){
-          el.focus();
+export default {
+  install (Vue, options) {
+    Vue.directive('focus', {
+      inserted: function (el) {
+        el.focus();
       }
-    }),
+    })
     Vue.directive('testme', {
-      bind: function(el, binding,vnode) {
-        var that = vnode.context;
+      bind: function (el, binding, vnode) {
+        // var that = vnode.context;
         console.log(vnode.data.attrs['data-direction']);
         console.log(binding.arg('1'));
       }
