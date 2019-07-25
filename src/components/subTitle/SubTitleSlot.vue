@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="dataList.slotValue == 3 && dataList.isShowSlot">
+    <div v-if="dataList.slotValue == 3 && dataList.isShowSlot" class="slot-contain-two">
       <div class="ground" v-if="dataList.id == 18">
         <div class="ground-left">
           <ul>
@@ -168,6 +168,10 @@ export default {
 <style scoped>
 .slot-contain {
   background-color: #fff;
+  z-index: 999;
+}
+.slot-contain-two {
+  width: 300px;
 }
 .slot-contain-one {
   position: relative;

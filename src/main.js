@@ -8,11 +8,18 @@ import myAlert from './common/alert';
 import myFilter from './tool/vFitler';
 import App from './App';
 import router from './router';
+import VueLazyload from 'vue-lazyload';
+import axios from './tool/httpAdapt';
+import globalData from './tool/globalData'
 
 Vue.use(myTool);
 Vue.use(myMix);
 Vue.use(myDirects);
 Vue.use(myAlert);
+Vue.use(VueLazyload);
+
+Vue.prototype.$http = axios;
+Vue.prototype.globalData = globalData;
 
 // 全局引入过滤器
 Object.keys(myFilter).forEach(key => Vue.filter(key, myFilter[key]));
