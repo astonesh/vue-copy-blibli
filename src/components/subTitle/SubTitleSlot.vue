@@ -171,7 +171,7 @@ export default {
   z-index: 999;
 }
 .slot-contain-two {
-  width: 300px;
+  width: 400px;
 }
 .slot-contain-one {
   position: relative;

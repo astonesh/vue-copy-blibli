@@ -54,7 +54,7 @@ export default {
 .top-bar_position {
   width: 100%;
   position: absolute;
-  z-index: 99;
+  z-index: 99999;
 }
 .swiper-body {
   padding-top: 70px;

@@ -7,7 +7,7 @@
 		<div class='item-num' v-if='item.hasNum'><span>{{item.num}}</span></div>
 		<div class='item-title'>{{item.title}}</div>
 		</a>
-		<div v-if='item.slotValue == 2 ||(item.slotValue == 3 && item.isShowSlot)' v-show='item.isShow' class="esp-slot">
+		<div v-if='item.slotValue == 2 ||(item.slotValue == 3 && item.isShowSlot)' v-show='item.isShow' :class="{'esp-slot-130': item.slotValue == 2, 'esp-slot-400': item.slotValue == 3}">
 			<sub-title-slot v-bind:item='item'></sub-title-slot>
 		</div>
 		</li>
@@ -458,7 +458,10 @@ export default {
 		font-size: 12px;
 		z-index: 999;
 	}
-	.esp-slot {
+	.esp-slot-130 {
+		z-index: 990;
+	}
+	.esp-slot-400 {
 		z-index: 990;
 		width: 400px;
 	}
