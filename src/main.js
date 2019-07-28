@@ -16,7 +16,6 @@ Vue.use(myTool);
 Vue.use(myMix);
 Vue.use(myDirects);
 Vue.use(myAlert);
-// Vue.use(VueLazyload);
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '../static/img/swiper-right-six.jpg',

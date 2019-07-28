@@ -3,33 +3,22 @@
     <div class="top-bar_position">
       <topBar></topBar>
     </div>
-    <div class="content-body">
-      <search-contain></search-contain>
-      <sub-title></sub-title>
-      <!-- <div><router-view /></div> -->
+    <div class='main-content'>
+      <router-view></router-view>
     </div>
-    <common></common>
-    <div class="swiper-body">
-      <swiper-contain></swiper-contain>
-    </div>
-  </div>
+  </div>  
 </template>
 
 <script>
 import TopBar from './components/banner/TopBar';
-import SearchContain from './components/searchContain/SearchContain';
-import SubTitle from './components/SubTitle/SubTitle';
-import Common from './components/common/Common';
-import SwiperContain from './components/for/SwiperContain';
+import MainContent from './components/contentBody/ContentBody';
+
 
 export default {
   name: 'App',
   components: {
     TopBar,
-    SearchContain,
-    SubTitle,
-    Common,
-    SwiperContain
+    MainContent
   },
   methods: {
     testMe () {
@@ -55,13 +44,7 @@ export default {
   width: 100%;
   position: absolute;
   z-index: 99999;
+  top: 0;
 }
-.swiper-body {
-  padding-top: 70px;
-  width: 980px;
-  display: inline-block;
-  margin: 0 auto;
-  overflow: hidden;
-  z-index: 90;
-}
+
 </style>
