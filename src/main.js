@@ -10,13 +10,19 @@ import App from './App';
 import router from './router';
 import VueLazyload from 'vue-lazyload';
 import axios from './tool/httpAdapt';
-import globalData from './tool/globalData'
+import globalData from './tool/globalData';
 
 Vue.use(myTool);
 Vue.use(myMix);
 Vue.use(myDirects);
 Vue.use(myAlert);
-Vue.use(VueLazyload);
+// Vue.use(VueLazyload);
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '../static/img/swiper-right-six.jpg',
+  loading: '../static/img/swiper-right-six.jpg',
+  attempt: 1
+})
 
 Vue.prototype.$http = axios;
 Vue.prototype.globalData = globalData;

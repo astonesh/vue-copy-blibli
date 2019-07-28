@@ -138,10 +138,16 @@ export default {
           reject(err);
         })
     })
+  },
+  mock: (data) => {
+    return new Promise((resolve, reject) => {
+      // axios.post(url, data, headers)
+      //   .then(response => {
+      //     resolve(response.data);
+      //   }, err => {
+      //     reject(err);
+      //   })
+      resolve(data);
+    })
   }
-  // mock: (data) => {
-  //   return Q.fcall(function () {
-  //     return 10;
-  //   })
-  // }
 };

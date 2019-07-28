@@ -1,11 +1,11 @@
 <template>
-  <div class="right-contain">
+  <div class="right-contain" @mouseenter='toggle ($event, true)' @mouseleave='toggle ($event, false)'>
     <div class="right-contain-content">
-      <ul class="right-content-items">
+      <ul class="right-content-items" >
         <li>
           <div>
-            <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <img v-lazy = "dataSrcItem" width="160px" height="100px" />
+            <p>da</p>
           </div>
         </li>
         <li>
@@ -40,8 +40,8 @@
         </li>
       </ul>
     </div>
-    <div class="tag-left tag" v-show="miniusTimes"><< 昨日</div>
-    <div class="tag-right tag" v-show="addTimes">一周 >></div>
+    <div class="tag-left tag" v-show="isShowTag" ref='leftTag' @click='changeTag(true)'><< {{tagArr[(index+1)%3]}}</div>
+    <div class="tag-right tag" v-show="isShowTag" ref='rightTag' @click='changeTag(false)'>{{tagArr[index]}} >></div>
   </div>
 </template>
 <script>
@@ -49,22 +49,52 @@ export default {
   name: 'SwiperRight',
   data () {
     return {
-      data: null,
+      tagArr:['昨日', '三日', '一周'],
+      index: 0,
+      dataSrc: [
+        require('../../assets/images/swiper-right-one.jpg'),
+        require('../../assets/images/swiper-right-two.jpg'),
+        require('../../assets/images/swiper-right-thr.jpg'),
+      ],
+      isShowTag: false,
       miniusTimes: false,
-      addTimes: false
+      addTimes: false,
+      dataSrcItem: null,
     };
   },
   methods: {
     getMockData () {
-      // return this.$http.mock(this.globalData.swiperData);
+      this.$http.mock(this.globalData.swiperData).then(data => {
+        // this.dataSrc = data[this.index]['src'];
+      })
+    },
+    async getData () {
+      this.dataSrc = await this.getMockData();
+      console.log(this.dataSrc);
+    },
+    toggle ($event, isShow) {
+      this.isShowTag = isShow;
+    },
+    changeTag (isUp) {
+      if(isUp) {
+        this.index++ ;
+      } else {
+        this.index-- ;
+      }
+      this.index === 3 ? this.index = 0 : (this.index === -1 ? this.index = 2 : '');
+      this.dataSrcItem = this.dataSrc[this.index];
     }
   },
-  beforeMount () {
+  beforeCreate () {
+  },
+  created () {
     this.getMockData();
   },
-  created () {},
+  beforeMount () {
+    // this.getData();
+    this.dataSrcItem = this.dataSrc[this.index];
+  },
   mounted () {
-    console.log(this.data);
   }
 };
 </script>
