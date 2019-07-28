@@ -39,8 +39,6 @@
   </div>
 </template>
 <script>
-// import { clearInterval, clearTimeout, setTimeout, setInterval } from 'timers';
-
 export default {
   name: 'SwiperLeft',
   data () {
@@ -60,7 +58,7 @@ export default {
       this.isShowMore = true;
     },
     changeImag (num) {
-      let percentNum = this.$refs['imageItems'].style['marginLeft'].split(
+      let percentNum = this.$refs['imageItems'] && this.$refs['imageItems'].style['marginLeft'].split(
         '%'
       )[0];
       if (!num) {
@@ -88,7 +86,9 @@ export default {
     intervalChangeImag () {
       if (!this.timer) {
         this.timer = setInterval(() => {
-          this.changeImag();
+          this.$nextTick(() => {
+            this.changeImag();
+          }) 
         }, 4000);
       }
     }

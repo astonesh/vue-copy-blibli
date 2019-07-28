@@ -19,15 +19,15 @@ export default new Router({
       name: 'MainContent',
       component: MainContent,
       children: [
-        // { path: '/', redirect: '/one' },
-        { path: '/one', component: SwiperContain },
-        { path: '/sec', component: SwiperContainSec }
+        { path: '', component: SwiperContain },
+        { path: 'one', component: SwiperContain },
+        { path: 'sec', component: SwiperContainSec }
       ]
     },
     {
       path: '/sec',
       name: 'MainContentSec',
       component: MainContentSec
-    },
+    }
   ]
 })
