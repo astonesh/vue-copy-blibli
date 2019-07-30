@@ -1,10 +1,14 @@
 <template>
-  <div class="right-contain" @mouseenter='toggle ($event, true)' @mouseleave='toggle ($event, false)'>
+  <div
+    class="right-contain"
+    @mouseenter="toggle ($event, true)"
+    @mouseleave="toggle ($event, false)"
+  >
     <div class="right-contain-content">
-      <ul class="right-content-items" >
+      <ul class="right-content-items">
         <li>
           <div>
-            <img v-lazy = "dataSrcItem" width="160px" height="100px" />
+            <img v-lazy="dataSrcItem" width="160px" height="100px" />
             <p>da</p>
           </div>
         </li>
@@ -40,8 +44,18 @@
         </li>
       </ul>
     </div>
-    <div class="tag-left tag" v-show="isShowTag" ref='leftTag' @click='changeTag(true)'><< {{tagArr[(index+1)%3]}}</div>
-    <div class="tag-right tag" v-show="isShowTag" ref='rightTag' @click='changeTag(false)'>{{tagArr[index]}} >></div>
+    <div
+      class="tag-left tag"
+      v-show="isShowTag"
+      ref="leftTag"
+      @click="changeTag(true)"
+    ><< {{tagArr[(index+1)%3]}}</div>
+    <div
+      class="tag-right tag"
+      v-show="isShowTag"
+      ref="rightTag"
+      @click="changeTag(false)"
+    >{{tagArr[index]}} >></div>
   </div>
 </template>
 <script>
@@ -49,24 +63,24 @@ export default {
   name: 'SwiperRight',
   data () {
     return {
-      tagArr:['昨日', '三日', '一周'],
+      tagArr: ['昨日', '三日', '一周'],
       index: 0,
       dataSrc: [
         require('../../assets/images/swiper-right-one.jpg'),
         require('../../assets/images/swiper-right-two.jpg'),
-        require('../../assets/images/swiper-right-thr.jpg'),
+        require('../../assets/images/swiper-right-thr.jpg')
       ],
       isShowTag: false,
       miniusTimes: false,
       addTimes: false,
-      dataSrcItem: null,
+      dataSrcItem: null
     };
   },
   methods: {
     getMockData () {
       this.$http.mock(this.globalData.swiperData).then(data => {
         // this.dataSrc = data[this.index]['src'];
-      })
+      });
     },
     async getData () {
       this.dataSrc = await this.getMockData();
@@ -76,17 +90,20 @@ export default {
       this.isShowTag = isShow;
     },
     changeTag (isUp) {
-      if(isUp) {
-        this.index++ ;
+      if (isUp) {
+        this.index++;
       } else {
-        this.index-- ;
+        this.index--;
       }
-      this.index === 3 ? this.index = 0 : (this.index === -1 ? this.index = 2 : '');
+      this.index === 3
+        ? (this.index = 0)
+        : this.index === -1
+          ? (this.index = 2)
+          : '';
       this.dataSrcItem = this.dataSrc[this.index];
     }
   },
-  beforeCreate () {
-  },
+  beforeCreate () {},
   created () {
     this.getMockData();
   },
@@ -94,8 +111,7 @@ export default {
     // this.getData();
     this.dataSrcItem = this.dataSrc[this.index];
   },
-  mounted () {
-  }
+  mounted () {}
 };
 </script>
 <style lang="stylus" scoped>

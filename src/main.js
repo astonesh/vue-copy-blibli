@@ -24,6 +24,7 @@ Vue.use(VueLazyload, {
 })
 
 Vue.prototype.$http = axios;
+Vue.prototype.$window = window;
 Vue.prototype.globalData = globalData;
 
 // 全局引入过滤器

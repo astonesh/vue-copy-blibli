@@ -3,22 +3,19 @@
     <div class="top-bar_position">
       <topBar></topBar>
     </div>
-    <div class='main-content'>
+    <div class="main-content">
       <router-view></router-view>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
 import TopBar from './components/banner/TopBar';
-import MainContent from './components/contentBody/ContentBody';
-
 
 export default {
   name: 'App',
   components: {
-    TopBar,
-    MainContent
+    TopBar
   },
   methods: {
     testMe () {
@@ -45,6 +42,6 @@ export default {
   position: absolute;
   z-index: 99999;
   top: 0;
+  font-size: 14px;
 }
-
 </style>

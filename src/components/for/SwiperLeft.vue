@@ -58,9 +58,9 @@ export default {
       this.isShowMore = true;
     },
     changeImag (num) {
-      let percentNum = this.$refs['imageItems'] && this.$refs['imageItems'].style['marginLeft'].split(
-        '%'
-      )[0];
+      let percentNum =
+        this.$refs['imageItems'] &&
+        this.$refs['imageItems'].style['marginLeft'].split('%')[0];
       if (!num) {
         if (percentNum == -400) {
           this.$refs['imageItems'].style['marginLeft'] = 0 + '%';
@@ -88,13 +88,18 @@ export default {
         this.timer = setInterval(() => {
           this.$nextTick(() => {
             this.changeImag();
-          }) 
+          });
         }, 4000);
       }
     }
   },
   beforeMount () {
     this.intervalChangeImag();
+  },
+  beforeDestroy () {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
 };
 </script>

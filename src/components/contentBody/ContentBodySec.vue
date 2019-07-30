@@ -5,9 +5,8 @@
 </template>
 
 <script>
-
 export default {
-  name: 'MainContentSec',
+  name: 'ContentBodySec',
   data () {
     return {};
   }
@@ -19,4 +18,3 @@ p {
   font-size: 20px;
 }
 </style>
-

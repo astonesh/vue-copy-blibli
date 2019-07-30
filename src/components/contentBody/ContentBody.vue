@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="content-body">
-        <search-contain></search-contain>
-        <sub-title></sub-title>
-      </div>
-      <common></common>
-      <div class="swiper-body">
-        <router-view></router-view>
-        <!-- <swiper-contain></swiper-contain> -->
-      </div>
+      <search-contain></search-contain>
+      <sub-title></sub-title>
+    </div>
+    <common></common>
+    <div class="swiper-body">
+      <router-view></router-view>
+      <!-- <swiper-contain></swiper-contain> -->
+    </div>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import Common from '../common/Common';
 import SwiperContain from '../for/SwiperContain';
 
 export default {
-  name: 'MainContent',
+  name: 'ContentBody',
   data () {
     return {};
   },
@@ -41,4 +41,3 @@ export default {
   z-index: 90;
 }
 </style>
-
