@@ -90,6 +90,17 @@ export default {
   components: {
     BannerItem,
     BannerSlot
+  },
+  beforeCreate () {
+    this.$router.addRoutes([
+      {
+        path: '/home',
+        redirect: '/sec'
+      }
+    ]);
+  },
+  mounted () {
+    console.log(this.$router);
   }
 };
 </script>

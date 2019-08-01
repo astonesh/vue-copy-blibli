@@ -5,7 +5,7 @@
     v-on:mouseleave="toggleSlot()"
     ref="li-lists"
   >
-    <a v-bind:href="null" v-bind:title="item.title" class="menu-item">
+    <a href="#/home" v-bind:title="item.title" class="menu-item">
       <i v-if="item.isShowPic && item.title !== 'login'"></i>
       <span v-if="item.title !='login'">{{item.title}}</span>
       <span v-if="item.title == 'login'" class="login_image">
