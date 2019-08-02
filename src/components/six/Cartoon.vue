@@ -8,11 +8,13 @@
         <div class="cartoon-contain_left-top">
           <div>
             <i></i>
-            <span>动画</span>
+            <span class="title">动画</span>
             <span>有新动态</span>
             <span>有最新投稿</span>
           </div>
-          <div>更多》</div>
+          <div>
+            <a href="#">更多》</a>
+          </div>
         </div>
         <div class="cartoon-contain_left-body"></div>
       </div>
@@ -79,61 +81,75 @@ export default {
     height: 381px;
     display: flex;
     justify-content: space-between;
-  }
 
-  .cartoon-contain_top {
-    width: 100%;
-    height: 45px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
+    .cartoon-contain_left {
+      width: 720px;
 
-    .cartoon-contain_top-left {
-      i {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background: url('../../assets/images/icons.png') -141px -908px no-repeat;
-      }
+      .cartoon-contain_left-top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 45px;
+        margin-bottom: 15px;
 
-      span {
-        display: inline-block;
-        position: relative;
-        top: -10px;
-        padding-left: 10px;
-        line-height: 45px;
-        font-size: 24px;
-      }
-    }
+        div {
+          &:first-child {
+            display: flex;
+            justify-content: flex-start;
 
-    .cartoon-contain_top-right p {
-      position: relative;
-      height: 34px;
-      line-height: 34px;
-      padding: 0 10px;
-      border-radius: 4px;
-      text-align: center;
-      background: #e5e9ef;
-      white-space: nowrap;
+            i {
+              width: 40px;
+              height: 40px;
+              background: url('../../assets/images/icons.png') -141px -908px no-repeat;
+            }
 
-      span {
-        padding-left: 6px;
+            span {
+              padding: 0 10px;
+              font-size: 12px;
+              cursor: pointer;
+              line-height: 45px;
 
-        &:first-child {
-          padding-right: 18px;
+              &:hover {
+                color: #00a1d6 !important;
+                border-bottom: 2px solid #00a1d6;
+              }
 
-          &::after {
-            display: inline-block;
-            width: 1px;
-            height: 12px;
-            content: '';
+              &:active {
+                color: #00a1d6 !important;
+                border-bottom: 2px solid #00a1d6;
+              }
+
+              &.title {
+                padding-left: 20px;
+                font-size: 24px;
+                font-weight: 400;
+                margin-right: 20px;
+                color: #222;
+              }
+            }
+          }
+
+          &:last-child {
             position: relative;
-            background: #99a2aa;
-            top: 1px;
-            left: 9px;
+            top: 8px;
+            width: 52px;
+            height: 22px;
+            line-height: 22px;
+            background-color: #fff;
+            border: 1px solid #ccd0d7;
+            color: #555;
+            border-radius: 4px;
+            text-align: center;
+            margin: 0 0 0 10px;
+            transition: all 0.2s;
+            font-size: 12px;
           }
         }
       }
+    }
+
+    .cartoon-contain_right {
+      width: 260px;
     }
   }
 
