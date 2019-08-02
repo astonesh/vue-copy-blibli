@@ -7,39 +7,57 @@
     <div class="right-contain-content">
       <ul class="right-content-items">
         <li>
-          <div>
+          <div @mouseenter="toggleMask(0)" @mouseleave="toggleMask(0)">
             <img v-lazy="dataSrcItem" width="160px" height="100px" />
-            <p>da</p>
+            <p v-show="!isShowMask[0]">da</p>
+            <div class="mask-div" v-show="isShowMask[0]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
         <li>
-          <div>
+          <div @mouseenter="toggleMask(1)" @mouseleave="toggleMask(1)">
             <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <p v-show="!isShowMask[1]">addgadagadddddddddddddddddd</p>
+            <div class="mask-div" v-show="isShowMask[1]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
         <li>
-          <div>
+          <div @mouseenter="toggleMask(2)" @mouseleave="toggleMask(2)">
             <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <p v-show="!isShowMask[2]">addgadagadddddddddddddddddd</p>
+            <div class="mask-div" v-show="isShowMask[2]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
         <li>
-          <div>
+          <div @mouseenter="toggleMask(3)" @mouseleave="toggleMask(3)">
             <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <p v-show="!isShowMask[3]">addgadagadddddddddddddddddd</p>
+            <div class="mask-div" v-show="isShowMask[3]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
         <li>
-          <div>
+          <div @mouseenter="toggleMask(4)" @mouseleave="toggleMask(4)">
             <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <p v-show="!isShowMask[4]">addgadagadddddddddddddddddd</p>
+            <div class="mask-div" v-show="isShowMask[4]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
         <li>
-          <div>
+          <div @mouseenter="toggleMask(5)" @mouseleave="toggleMask(5)">
             <img src="../../assets/images/swiper-right-one.jpg" width="160px" height="100px" />
-            <p>addgadagadddddddddddddddddd</p>
+            <p v-show="!isShowMask[5]">addgadagadddddddddddddddddd</p>
+            <div class="mask-div" v-show="isShowMask[5]">
+              <my-mask :item="maskItem"></my-mask>
+            </div>
           </div>
         </li>
       </ul>
@@ -70,10 +88,16 @@ export default {
         require('../../assets/images/swiper-right-two.jpg'),
         require('../../assets/images/swiper-right-thr.jpg')
       ],
+      isShowMask: [false, false, false, false, false, false],
       isShowTag: false,
       miniusTimes: false,
       addTimes: false,
-      dataSrcItem: null
+      dataSrcItem: null,
+      maskItem: {
+        title: 'nihaooaoalaklajk',
+        subTitleOne: 'Up主： xxx小行星',
+        subTitleTwo: 'Up主： xxx小行星11111'
+      }
     };
   },
   methods: {
@@ -88,6 +112,9 @@ export default {
     },
     toggle ($event, isShow) {
       this.isShowTag = isShow;
+    },
+    toggleMask (index) {
+      this.isShowMask.splice(index, 1, !this.isShowMask[index]);
     },
     changeTag (isUp) {
       if (isUp) {
@@ -172,6 +199,14 @@ export default {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+          }
+
+          .mask-div {
+            position: absolute;
+            width: 160px;
+            height: 100px;
+            top: 0;
+            left: 0;
           }
         }
       }

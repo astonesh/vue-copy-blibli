@@ -16,7 +16,6 @@
 import SearchContain from '../searchContain/SearchContain';
 import SubTitle from '../SubTitle/SubTitle';
 import Common from '../common/Common';
-import SwiperContain from '../for/SwiperContain';
 
 export default {
   name: 'ContentBody',
@@ -26,8 +25,7 @@ export default {
   components: {
     SearchContain,
     SubTitle,
-    Common,
-    SwiperContain
+    Common
   }
 };
 </script>

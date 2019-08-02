@@ -1,11 +1,29 @@
 <template>
-  <div class="promotion-contain">
-    <div class="promotion-contain_top">
-      <div class="promotion-contain_top-left">
-        <i></i>
-        <span>推广</span>
+  <div class="cartoon-contain">
+    <div class="cartoon-contain_log">
+      <img src="static/img/six-logo.jpg" width="980px" height="82px" />
+    </div>
+    <div class="cartoon-contain_content">
+      <div class="cartoon-contain_left">
+        <div class="cartoon-contain_left-top">
+          <div>
+            <i></i>
+            <span>动画</span>
+            <span>有新动态</span>
+            <span>有最新投稿</span>
+          </div>
+          <div>更多》</div>
+        </div>
+        <div class="cartoon-contain_left-body"></div>
       </div>
-      <div class="promotion-contain_top-right">
+    </div>
+
+    <!-- <div class="cartoon-contain_top">
+      <div class="cartoon-contain_top-left">
+        <i></i>
+        <span>动画</span>
+      </div>
+      <div class="cartoon-contain_top-right">
         <p>
           在线人数:
           <span>4467444</span>最新投稿
@@ -13,27 +31,25 @@
         </p>
       </div>
     </div>
-    <div class="promotion-contain_body">
-      <div class="promotion-contain_body-left">
+    <div class="cartoon-contain_body">
+      <div class="cartoon-contain_body-left">
         <div v-for="n in 4">
           <div class="left-img-item">
             <image-item :item="item" v-bind:key="n"></image-item>
           </div>
         </div>
       </div>
-      <div class="promotion-contain_body-right">
+      <div class="cartoon-contain_body-right">
         <a href="#">
           <img src="../../assets/images/swiper-right-for.png" width="260px" height="150px" />
         </a>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
-import ImageItem from './ImagItem';
-
 export default {
-  name: 'Promotion',
+  name: 'cartoon',
   data () {
     return {
       item: {
@@ -42,32 +58,42 @@ export default {
       }
     };
   },
-  components: {
-    ImageItem
-  }
+  components: {}
 };
 </script>
 <style lang="stylus" scoped>
-.promotion-contain {
+.cartoon-contain {
   width: 100%;
-  height: 228px;
-  margin: 15px 0;
-  color: #000 !important;
+  height: 511px;
+  margin: 0 0 30px 0;
+  color: #000;
   text-align: left;
 
-  .promotion-contain_top {
+  .cartoon-contain_logo {
+    height: 82px;
+    margin-bottom: 20px;
+  }
+
+  .cartoon-contain_content {
+    width: 100%;
+    height: 381px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cartoon-contain_top {
     width: 100%;
     height: 45px;
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
 
-    .promotion-contain_top-left {
+    .cartoon-contain_top-left {
       i {
         display: inline-block;
         width: 40px;
         height: 40px;
-        background: url('../../assets/images/icons.png') -141px -75px no-repeat;
+        background: url('../../assets/images/icons.png') -141px -908px no-repeat;
       }
 
       span {
@@ -80,7 +106,7 @@ export default {
       }
     }
 
-    .promotion-contain_top-right p {
+    .cartoon-contain_top-right p {
       position: relative;
       height: 34px;
       line-height: 34px;
@@ -111,12 +137,12 @@ export default {
     }
   }
 
-  .promotion-contain_body {
+  .cartoon-contain_body {
     display: flex;
     justify-content: space-between;
     height: 168px;
 
-    .promotion-contain_body-left {
+    .cartoon-contain_body-left {
       width: 720px;
       height: 100%;
       display: flex;
@@ -129,7 +155,7 @@ export default {
       }
     }
 
-    .promotion-contain_body-right {
+    .cartoon-contain_body-right {
       width: 260px;
       height: 100%;
     }
