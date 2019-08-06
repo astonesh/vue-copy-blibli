@@ -20,9 +20,10 @@ export default {
   methods: {
     toggleMask () {
       this.newItem.isShowMask = !this.newItem.isShowMask;
+      this.$emit('maskChange', this.newItem.isShowMask, this.num);
     }
   },
-  props: ['item']
+  props: ['item', 'num']
 };
 </script>
 <style lang="stylus" scoped>

@@ -16,40 +16,42 @@
             <a href="#">更多》</a>
           </div>
         </div>
-        <div class="cartoon-contain_left-body"></div>
-      </div>
-    </div>
-
-    <!-- <div class="cartoon-contain_top">
-      <div class="cartoon-contain_top-left">
-        <i></i>
-        <span>动画</span>
-      </div>
-      <div class="cartoon-contain_top-right">
-        <p>
-          在线人数:
-          <span>4467444</span>最新投稿
-          <span>89154</span>
-        </p>
-      </div>
-    </div>
-    <div class="cartoon-contain_body">
-      <div class="cartoon-contain_body-left">
-        <div v-for="n in 4">
-          <div class="left-img-item">
-            <image-item :item="item" v-bind:key="n"></image-item>
+        <div class="cartoon-contain_left-body">
+          <div v-for="n in 8" v-bind:key="n" class="cartoon-contain_pos">
+            <div class="cartoon-left-img">
+              <image-item :item="item" :num="n" v-bind:key="n" @maskChange="changeDes"></image-item>
+            </div>
+            <div class="cartoon-left-img-desc" v-show="isShowDes[n-1]">
+              <span>
+                <i class="i-fir"></i>48.5万
+              </span>
+              <span>
+                <i class="i-last"></i>2961
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="cartoon-contain_body-right">
-        <a href="#">
-          <img src="../../assets/images/swiper-right-for.png" width="260px" height="150px" />
-        </a>
+      <div class="cartoon-contain_right">
+        <div class="cartoon-contain_right-top">
+          <p>
+            <span>排行</span>
+            <span>全部</span>
+            <span>原创</span>
+          </p>
+          <div>
+            <select>
+              <option>三日</option>
+              <option>一周</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 <script>
+import imageItem from '../Fiv/ImagItem';
 export default {
   name: 'cartoon',
   data () {
@@ -57,10 +59,23 @@ export default {
       item: {
         title: 'isssaa你好wom你好women你好w你好womenomen你好womenen',
         isShowMask: false
-      }
+      },
+      isShowDes: [true, true, true, true, true, true, true, true]
     };
   },
-  components: {}
+  methods: {
+    changeDes () {
+      if (!arguments[0]) {
+        this.isShowDes.splice(arguments[1] - 1, 1, true);
+      }
+      if (arguments[0]) {
+        this.isShowDes.splice(arguments[1] - 1, 1, false);
+      }
+    }
+  },
+  components: {
+    imageItem
+  }
 };
 </script>
 <style lang="stylus" scoped>
@@ -146,34 +161,59 @@ export default {
           }
         }
       }
+
+      .cartoon-contain_left-body {
+        height: 336px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        div {
+          position: relative;
+
+          .cartoon-left-img {
+            width: 160px;
+            height: 148px;
+            margin: 0 20px 20px 0;
+          }
+
+          .cartoon-left-img-desc {
+            position: absolute;
+            left: 6px;
+            bottom: 22px;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            font-size: 12px;
+            color: #99a2aa;
+            background: #fff;
+
+            i {
+              display: inline-block;
+              width: 12px;
+              height: 12px;
+              margin-right: 8px;
+
+              &.i-fir {
+                background: url('../../assets/images/icons.png') -282px -90px no-repeat;
+              }
+
+              &.i-last {
+                background: url('../../assets/images/icons.png') -282px -218px no-repeat;
+              }
+            }
+
+            span:first-child {
+              padding-right: 30px;
+            }
+          }
+        }
+      }
     }
 
     .cartoon-contain_right {
       width: 260px;
-    }
-  }
-
-  .cartoon-contain_body {
-    display: flex;
-    justify-content: space-between;
-    height: 168px;
-
-    .cartoon-contain_body-left {
-      width: 720px;
-      height: 100%;
-      display: flex;
-      justify-content: flex-start;
-
-      .left-img-item {
-        width: 160px;
-        height: 148px;
-        margin: 0 20px 20px 0;
-      }
-    }
-
-    .cartoon-contain_body-right {
-      width: 260px;
-      height: 100%;
+      height: 363px;
     }
   }
 }
