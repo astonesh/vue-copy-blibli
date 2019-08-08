@@ -36,8 +36,8 @@
         <div class="cartoon-contain_right-top">
           <p>
             <span>排行</span>
-            <span>全部</span>
-            <span>原创</span>
+            <span :class="{'isActive': isRightIndex == 1 }">全部</span>
+            <span :class="{'isActive': isRightIndex == 2 }">原创</span>
           </p>
           <div>
             <select>
@@ -46,12 +46,17 @@
             </select>
           </div>
         </div>
+        <div class="cartoon-contain_right-body">
+          <cartoon-list :items="items"></cartoon-list>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import imageItem from '../Fiv/ImagItem';
+import CartoonList from './CartoonList';
+
 export default {
   name: 'cartoon',
   data () {
@@ -60,10 +65,46 @@ export default {
         title: 'isssaa你好wom你好women你好w你好womenomen你好womenen',
         isShowMask: false
       },
-      isShowDes: [true, true, true, true, true, true, true, true]
+      isRightIndex: 1,
+      isShowDes: [true, true, true, true, true, true, true, true],
+      items: []
+      // items: [
+      //   {
+      //     content: '你好women你好',
+      //     score: '89799'
+      //   },
+      //   {
+      //     content: '你好women你好',
+      //     isActive: false
+      //   },
+      //   {
+      //     content: '你好women你好',
+      //     isActive: true
+      //   },
+      //   {
+      //     content: '你好women你好',
+      //     isActive: true
+      //   },
+      //   {
+      //     content: '你好women你好',
+      //     isActive: true
+      //   },
+      //   {
+      //     content: '你好women你好'
+      //   },
+      //   {
+      //     content: '你好women你好'
+      //   }
+      // ]
     };
   },
   methods: {
+    getList () {
+      debugger;
+      this.$store.dispatch('getList', {
+        index: this.isRightIndex
+      });
+    },
     changeDes () {
       if (!arguments[0]) {
         this.isShowDes.splice(arguments[1] - 1, 1, true);
@@ -74,7 +115,11 @@ export default {
     }
   },
   components: {
-    imageItem
+    imageItem,
+    CartoonList
+  },
+  mounted () {
+    this.getList();
   }
 };
 </script>
@@ -147,6 +192,7 @@ export default {
           &:last-child {
             position: relative;
             top: 8px;
+            right: 20px;
             width: 52px;
             height: 22px;
             line-height: 22px;
@@ -167,6 +213,7 @@ export default {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        overflow: hidden;
 
         div {
           position: relative;
@@ -214,6 +261,65 @@ export default {
     .cartoon-contain_right {
       width: 260px;
       height: 363px;
+      margin-top: 5px;
+
+      .cartoon-contain_right-top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 32px;
+        margin-bottom: 15px;
+        line-height: 32px;
+
+        p {
+          line-height: 32px;
+
+          span {
+            display: inline-block;
+            margin-right: 8px;
+            text-align: center;
+
+            &:first-child {
+              font-size: 18px;
+              color: #000 !important;
+
+              &:hover {
+                border-bottom: 0px solid #00a1d6;
+                color: #000 !important;
+              }
+            }
+
+            &:hover {
+              color: #00a1d6 !important;
+              border-bottom: 2px solid #00a1d6;
+            }
+
+            &:active {
+              color: #00a1d6 !important;
+              border-bottom: 2px solid #00a1d6;
+            }
+
+            &.isActive {
+              color: #00a1d6 !important;
+              border-bottom: 2px solid #00a1d6;
+            }
+          }
+        }
+
+        select {
+          display: inline-block;
+          padding: 0 7px;
+          height: 22px;
+          line-height: 22px;
+          border: 1px solid #ccd0d7;
+          border-radius: 4px;
+        }
+      }
+
+      .cartoon-contain_right-body {
+        width: 260px;
+        margin-top: 20px;
+      }
     }
   }
 }

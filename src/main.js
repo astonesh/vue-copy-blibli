@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
+import store from './store/index';
 import myDirects from './vDirective/vDirective';
 import myMix from './vDirective/vMin'
 import myTool from './tool/tool';
@@ -38,6 +39,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
