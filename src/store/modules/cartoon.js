@@ -1,8 +1,6 @@
 import { CARTOON_RIGHT_LIST } from '../mutation_type';
 import { cartoonData } from '../../api/cartoonData';
 
-const aa = [1];
-
 const cartoon = {
   state: {
     list: [],
@@ -12,11 +10,11 @@ const cartoon = {
   },
   actions: {
     async getList ({ commit, state }, params) {
-      debugger
       const res = {
-        list: aa,
+        list: cartoonData.data[params.index - 1],
         index: params.index
       };
+      console.log(cartoonData.data[params.index - 1]);
       await commit(CARTOON_RIGHT_LIST, res);
     }
   },

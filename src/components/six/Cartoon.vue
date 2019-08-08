@@ -36,8 +36,8 @@
         <div class="cartoon-contain_right-top">
           <p>
             <span>排行</span>
-            <span :class="{'isActive': isRightIndex == 1 }">全部</span>
-            <span :class="{'isActive': isRightIndex == 2 }">原创</span>
+            <span :class="{'isActive': index == 1 }">全部</span>
+            <span :class="{'isActive': index == 2 }">原创</span>
           </p>
           <div>
             <select>
@@ -56,6 +56,7 @@
 <script>
 import imageItem from '../Fiv/ImagItem';
 import CartoonList from './CartoonList';
+import { mapState } from 'vuex';
 
 export default {
   name: 'cartoon',
@@ -67,7 +68,7 @@ export default {
       },
       isRightIndex: 1,
       isShowDes: [true, true, true, true, true, true, true, true],
-      items: []
+      // items: []
       // items: [
       //   {
       //     content: '你好women你好',
@@ -98,9 +99,14 @@ export default {
       // ]
     };
   },
+  computed: {
+    ...mapState({
+      items: state => state.cartoon.list,
+      index: state => state.cartoon.index
+    })
+  },
   methods: {
     getList () {
-      debugger;
       this.$store.dispatch('getList', {
         index: this.isRightIndex
       });
