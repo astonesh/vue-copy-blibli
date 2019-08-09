@@ -1,39 +1,44 @@
 <template>
-  <div class="cartoon-contain">
-    <div class="cartoon-contain_log">
-      <img src="static/img/six-logo.jpg" width="980px" height="82px" />
-    </div>
-    <div class="cartoon-contain_content">
-      <div class="cartoon-contain_left">
-        <div class="cartoon-contain_left-top">
+  <div class="drama-contain">
+    <div class="drama-contain_content">
+      <div class="drama-contain_left">
+        <div class="drama-contain_left-top">
           <div>
             <i></i>
-            <span class="title">动画</span>
-            <span>有新动态</span>
-            <span>有最新投稿</span>
+            <span class="title">番剧</span>
+            <span class="title-tab">最新</span>
+            <span class="title-tab">一</span>
+            <span class="title-tab">二</span>
+            <span class="title-tab">三</span>
+            <span class="title-tab">四</span>
+            <span class="title-tab">五</span>
+            <span class="title-tab">六</span>
+            <span class="title-tab">日</span>
           </div>
           <div>
-            <a href="#">更多》</a>
+            <a href="#">新番时间表 ></a>
           </div>
         </div>
-        <div class="cartoon-contain_left-body">
-          <div v-for="n in 8" v-bind:key="n" class="cartoon-contain_pos">
-            <div class="cartoon-left-img">
-              <image-item :item="item" :num="n" v-bind:key="n" @maskChange="changeDes"></image-item>
-            </div>
-            <div class="cartoon-left-img-desc" v-show="isShowDes[n-1]">
-              <span>
-                <i class="i-fir"></i>48.5万
-              </span>
-              <span>
-                <i class="i-last"></i>2961
-              </span>
+        <div class="drama-contain_left-body">
+          <div class="drama-contain_left-body-contain">
+            <div v-for="n in 18" v-bind:key="n" class="drama-contain_pos">
+              <div class="drama-left-img">
+                <drama-image-item :item="item" :num="n" v-bind:key="n" @maskChange="changeDes"></drama-image-item>
+              </div>
+              <div class="drama-left-img-desc" v-show="isShowDes[n-1]">
+                <span>
+                  <i class="i-fir"></i>48.5万
+                </span>
+                <span>
+                  <i class="i-last"></i>2961
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="cartoon-contain_right">
-        <div class="cartoon-contain_right-top">
+      <div class="drama-contain_right">
+        <div class="drama-contain_right-top">
           <p>
             <span>排行</span>
             <span :class="{'isActive': index == 1 }" @mouseenter="changeItems('1')">全部</span>
@@ -46,20 +51,20 @@
             </select>
           </div>
         </div>
-        <div class="cartoon-contain_right-body">
-          <cartoon-list :items="items"></cartoon-list>
+        <div class="drama-contain_right-body">
+          <drama-list :items="items"></drama-list>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import imageItem from '../Fiv/ImagItem';
-import CartoonList from './CartoonList';
+import dramaImageItem from './DramaImagItem';
+import dramaList from '../Six/CartoonList';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'cartoon',
+  name: 'drama',
   data () {
     return {
       item: {
@@ -127,8 +132,8 @@ export default {
     }
   },
   components: {
-    imageItem,
-    CartoonList
+    dramaImageItem,
+    dramaList
   },
   mounted () {
     this.getList();
@@ -136,33 +141,27 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.cartoon-contain {
+.drama-contain {
   width: 100%;
-  height: 511px;
-  margin: 0 0 30px 0;
   color: #000;
   text-align: left;
 
-  .cartoon-contain_logo {
-    height: 82px;
-    margin-bottom: 20px;
-  }
-
-  .cartoon-contain_content {
+  .drama-contain_content {
     width: 100%;
-    height: 381px;
+    height: 509px;
     display: flex;
     justify-content: space-between;
 
-    .cartoon-contain_left {
+    .drama-contain_left {
       width: 720px;
 
-      .cartoon-contain_left-top {
+      .drama-contain_left-top {
         display: flex;
         justify-content: space-between;
         width: 100%;
         height: 45px;
         margin-bottom: 15px;
+        position: relative;
 
         div {
           &:first-child {
@@ -172,14 +171,17 @@ export default {
             i {
               width: 40px;
               height: 40px;
-              background: url('../../assets/images/icons.png') -141px -908px no-repeat;
+              background: url('../../assets/images/icons.png') -141px -140px no-repeat;
             }
 
             span {
-              padding: 0 10px;
-              font-size: 12px;
+              display: inline-block;
+              width: 48px;
+              text-align: center;
+              font-size: 18px;
               cursor: pointer;
               line-height: 45px;
+              border-bottom: 1px solid #e5e9ef;
 
               &:hover {
                 color: #00a1d6 !important;
@@ -197,85 +199,104 @@ export default {
                 font-weight: 400;
                 margin-right: 20px;
                 color: #222;
+                border-bottom: 0px solid #e5e9ef;
+
+                &:hover {
+                  color: #000 !important;
+                  border-bottom: 0 solid #00a1d6;
+                }
               }
             }
           }
 
           &:last-child {
-            position: relative;
-            top: 8px;
-            right: 20px;
-            width: 52px;
-            height: 22px;
-            line-height: 22px;
-            background-color: #fff;
-            border: 1px solid #ccd0d7;
-            color: #555;
-            border-radius: 4px;
+            position: absolute;
+            right: 24px;
+            top: 0px;
+            border: 1px solid #f25d8e;
+            width: 104px;
+            height: 34px;
+            line-height: 34px;
             text-align: center;
-            margin: 0 0 0 10px;
-            transition: all 0.2s;
-            font-size: 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: 0.1s;
+
+            a {
+              color: #f25d8e;
+            }
           }
         }
       }
 
-      .cartoon-contain_left-body {
-        height: 336px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        overflow: hidden;
+      .drama-contain_left-body {
+        position: relative;
+        margin: 26px 20px 40px 0;
+        height: 398px;
 
-        div {
-          position: relative;
+        .drama-contain_left-body-contain {
+          width: 100%;
+          height: auto;
+          overflow-y: auto;
+          overflow-x: hidden;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          overflow: hidden;
 
-          .cartoon-left-img {
-            width: 160px;
-            height: 148px;
-            margin: 0 20px 20px 0;
-          }
+          div {
+            position: relative;
+            width: 226px;
+            height: 72px;
+            padding: 36px 46px 0 0;
 
-          .cartoon-left-img-desc {
-            position: absolute;
-            left: 6px;
-            bottom: 22px;
-            width: 100%;
-            height: 20px;
-            line-height: 20px;
-            font-size: 12px;
-            color: #99a2aa;
-            background: #fff;
-
-            i {
-              display: inline-block;
-              width: 12px;
-              height: 12px;
-              margin-right: 8px;
-
-              &.i-fir {
-                background: url('../../assets/images/icons.png') -282px -90px no-repeat;
-              }
-
-              &.i-last {
-                background: url('../../assets/images/icons.png') -282px -218px no-repeat;
-              }
+            .drama-left-img {
+              width: 72px;
+              height: 72px;
+              margin: 0 20px 20px 0;
             }
 
-            span:first-child {
-              padding-right: 30px;
+            .drama-left-img-desc {
+              position: absolute;
+              left: 6px;
+              bottom: 22px;
+              width: 100%;
+              height: 20px;
+              line-height: 20px;
+              font-size: 12px;
+              color: #99a2aa;
+              background: #fff;
+
+              i {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin-right: 8px;
+
+                &.i-fir {
+                  background: url('../../assets/images/icons.png') -282px -90px no-repeat;
+                }
+
+                &.i-last {
+                  background: url('../../assets/images/icons.png') -282px -218px no-repeat;
+                }
+              }
+
+              span:first-child {
+                padding-right: 30px;
+              }
             }
           }
         }
       }
     }
 
-    .cartoon-contain_right {
+    .drama-contain_right {
       width: 260px;
       height: 363px;
       margin-top: 5px;
 
-      .cartoon-contain_right-top {
+      .drama-contain_right-top {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -328,7 +349,7 @@ export default {
         }
       }
 
-      .cartoon-contain_right-body {
+      .drama-contain_right-body {
         width: 260px;
         margin-top: 20px;
       }

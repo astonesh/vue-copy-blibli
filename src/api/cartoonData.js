@@ -35,7 +35,15 @@ export const cartoonData = {
       },
       {
         content: '你好women你好',
-        isActive: false
+        isActive: true
+      },
+      {
+        content: '你好women你好',
+        isActive: true
+      },
+      {
+        content: '你好women你好',
+        isActive: true
       },
       {
         content: '你好women你好',
@@ -48,12 +56,6 @@ export const cartoonData = {
       {
         content: '你好women你好',
         isActive: true
-      },
-      {
-        content: '你好women你好'
-      },
-      {
-        content: '你好women你好'
       }
     ]
   ]
