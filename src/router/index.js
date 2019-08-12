@@ -13,8 +13,9 @@ const ContentBody = (resolve) => {
 const ContentBodySec = (resolve) => {
   require(['@/components/ContentBody/ContentBodySec'], resolve);
 };
-const SwiperContain = (resolve) => {
-  require(['@/components/for/SwiperContain'], resolve);
+
+const SwiperContainMain = (resolve) => {
+  require(['@/components/contentBody/ContentBodyMain'], resolve)
 };
 const SwiperContainSec = (resolve) => {
   require(['@/components/for/SwiperContainSec'], resolve);
@@ -31,8 +32,9 @@ const router = new Router({
       name: 'ContentBody',
       component: ContentBody,
       children: [
-        { path: '/one', component: SwiperContain },
-        { path: '/one/one', component: SwiperContain },
+
+        { path: '/one', component: SwiperContainMain },
+        { path: '/one/one', component: SwiperContainMain },
         { path: '/one/sec', component: SwiperContainSec }
       ]
     },
