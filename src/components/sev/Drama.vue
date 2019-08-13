@@ -6,14 +6,14 @@
           <div>
             <i></i>
             <span class="title">番剧</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 8}">最新</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 1}">一</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 2}">二</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 3}">三</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 4}">四</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 5}">五</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 6}">六</span>
-            <span :class="{'title-tab': true, 'title-tab-active': index == 7}">日</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 8}">最新</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 1}">一</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 2}">二</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 3}">三</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 4}">四</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 5}">五</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 6}">六</span>
+            <span :class="{'title-tab': true, 'title-tab-active': Aindex == 7}">日</span>
           </div>
           <div>
             <a href="#">新番时间表 ></a>
@@ -69,7 +69,7 @@ export default {
         title: 'isssaa你好wom你好women你好w你好womenomen你好womenen',
         isShowMask: false
       },
-      index: 8,
+      Aindex: 8,
       isShowDes: [true, true, true, true, true, true, true, true]
       // items: [
       //   {
@@ -110,7 +110,7 @@ export default {
   methods: {
     getList () {
       this.$store.dispatch('getList', {
-        index: this.isRightIndex
+        index: this.index
       });
     },
     changeDes () {
