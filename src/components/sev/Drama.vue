@@ -6,14 +6,14 @@
           <div>
             <i></i>
             <span class="title">番剧</span>
-            <span class="title-tab">最新</span>
-            <span class="title-tab">一</span>
-            <span class="title-tab">二</span>
-            <span class="title-tab">三</span>
-            <span class="title-tab">四</span>
-            <span class="title-tab">五</span>
-            <span class="title-tab">六</span>
-            <span class="title-tab">日</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 8}">最新</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 1}">一</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 2}">二</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 3}">三</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 4}">四</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 5}">五</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 6}">六</span>
+            <span :class="{'title-tab': true, 'title-tab-active': index == 7}">日</span>
           </div>
           <div>
             <a href="#">新番时间表 ></a>
@@ -21,17 +21,9 @@
         </div>
         <div class="drama-contain_left-body">
           <div class="drama-contain_left-body-contain">
-            <div v-for="n in 18" v-bind:key="n" class="drama-contain_pos">
+            <div v-for="n in 13" v-bind:key="n" class="drama-contain_pos">
               <div class="drama-left-img">
                 <drama-image-item :item="item" :num="n" v-bind:key="n" @maskChange="changeDes"></drama-image-item>
-              </div>
-              <div class="drama-left-img-desc" v-show="isShowDes[n-1]">
-                <span>
-                  <i class="i-fir"></i>48.5万
-                </span>
-                <span>
-                  <i class="i-last"></i>2961
-                </span>
               </div>
             </div>
           </div>
@@ -41,8 +33,6 @@
         <div class="drama-contain_right-top">
           <p>
             <span>排行</span>
-            <span :class="{'isActive': index == 1 }" @mouseenter="changeItems('1')">全部</span>
-            <span :class="{'isActive': index == 2 }" @mouseenter="changeItems('2')">原创</span>
           </p>
           <div>
             <select>
@@ -52,7 +42,15 @@
           </div>
         </div>
         <div class="drama-contain_right-body">
-          <drama-list :items="items"></drama-list>
+          <div v-for="n in 10" v-bind:key="n" class="drama-contain_right-a">
+            <a href="#">
+              <span v-bind:class="{'isActive': item.isActive}">{{n}}</span>
+              你好
+            </a>
+          </div>
+          <div class="drama-list-item-more">
+            <a href="#">查看更多 》</a>
+          </div>
         </div>
       </div>
     </div>
@@ -71,7 +69,7 @@ export default {
         title: 'isssaa你好wom你好women你好w你好womenomen你好womenen',
         isShowMask: false
       },
-      isRightIndex: 1,
+      index: 8,
       isShowDes: [true, true, true, true, true, true, true, true]
       // items: [
       //   {
@@ -163,6 +161,10 @@ export default {
         margin-bottom: 15px;
         position: relative;
 
+        .title-tab-active {
+          border-bottom: 2px solid #00a1d6 !important;
+        }
+
         div {
           &:first-child {
             display: flex;
@@ -233,58 +235,27 @@ export default {
         position: relative;
         margin: 26px 20px 40px 0;
         height: 398px;
+        overflow-x: hidden;
+        width: 700px;
+        overflow-y: scroll;
 
         .drama-contain_left-body-contain {
           width: 100%;
-          height: auto;
           overflow-y: auto;
-          overflow-x: hidden;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          overflow: hidden;
+          display: inline-block;
 
           div {
+            display: inline-block;
+            float: left;
             position: relative;
-            width: 226px;
+            width: 180px;
             height: 72px;
-            padding: 36px 46px 0 0;
+            margin-right: 46px;
+            margin-bottom: 36px;
 
             .drama-left-img {
-              width: 72px;
+              width: 180px;
               height: 72px;
-              margin: 0 20px 20px 0;
-            }
-
-            .drama-left-img-desc {
-              position: absolute;
-              left: 6px;
-              bottom: 22px;
-              width: 100%;
-              height: 20px;
-              line-height: 20px;
-              font-size: 12px;
-              color: #99a2aa;
-              background: #fff;
-
-              i {
-                display: inline-block;
-                width: 12px;
-                height: 12px;
-                margin-right: 8px;
-
-                &.i-fir {
-                  background: url('../../assets/images/icons.png') -282px -90px no-repeat;
-                }
-
-                &.i-last {
-                  background: url('../../assets/images/icons.png') -282px -218px no-repeat;
-                }
-              }
-
-              span:first-child {
-                padding-right: 30px;
-              }
             }
           }
         }
@@ -293,7 +264,7 @@ export default {
 
     .drama-contain_right {
       width: 260px;
-      height: 363px;
+      height: 445px;
       margin-top: 5px;
 
       .drama-contain_right-top {
@@ -352,6 +323,39 @@ export default {
       .drama-contain_right-body {
         width: 260px;
         margin-top: 20px;
+
+        .drama-contain_right-a {
+          margin-bottom: 20px;
+
+          a {
+            font-size: 12px;
+
+            span {
+              margin-right: 10px;
+              display: inline-block;
+              line-height: 18px;
+              text-align: center;
+              font-weight: 600;
+              color: #fff;
+              width: 18px;
+              height: 18px;
+              border-radius: 4px;
+              background: #f25d8e;
+            }
+          }
+        }
+
+        .drama-list-item-more {
+          font-size: 12px;
+          height: 24px;
+          line-height: 24px;
+          background-color: #e5e9ef;
+          text-align: center;
+          border: 1px solid #e0e6ed;
+          color: #222;
+          border-radius: 4px;
+          transition: 0.2s;
+        }
       }
     }
   }

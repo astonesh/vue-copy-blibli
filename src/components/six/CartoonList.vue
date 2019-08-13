@@ -31,7 +31,7 @@ export default {
   },
   methods: {},
   mounted () {
-    console.log(this.items);
+    // console.log(this.items);
   },
   props: ['items']
 };
