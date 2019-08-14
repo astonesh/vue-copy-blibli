@@ -6,20 +6,33 @@
     <div class="main-content">
       <router-view></router-view>
     </div>
+    <div class="bottom-bar_position" v-show="isShowBottom">
+      <bottom-bar v-on:hideBottom="hideBottom"></bottom-bar>
+    </div>
   </div>
 </template>
 
 <script>
 import TopBar from './components/banner/TopBar';
+import BottomBar from './components/banner/BottomBar';
 
 export default {
   name: 'App',
+  data () {
+    return {
+      isShowBottom: true
+    };
+  },
   components: {
-    TopBar
+    TopBar,
+    BottomBar
   },
   methods: {
     testMe () {
-      console.log('111');
+      // console.log('111');
+    },
+    hideBottom (data) {
+      this.isShowBottom = false;
     }
   }
 };
@@ -31,6 +44,7 @@ export default {
   height: 100%;
   text-align: center;
   color: #2c3e50;
+  padding-bottom: 56px;
 }
 .content-body {
   width: 100%;
@@ -42,6 +56,13 @@ export default {
   position: absolute;
   z-index: 99999;
   top: 0;
+  font-size: 14px;
+}
+.bottom-bar_position {
+  width: 100%;
+  position: fixed;
+  background: #fff;
+  bottom: 0;
   font-size: 14px;
 }
 </style>

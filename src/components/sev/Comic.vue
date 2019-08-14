@@ -1,24 +1,24 @@
 <template>
-  <div class="drama-status-contain">
-    <div class="drama-status-contain_content">
-      <div class="drama-status-contain_left">
-        <div class="drama-status-contain_left-top">
+  <div class="comic-status-contain">
+    <div class="comic-status-contain_content">
+      <div class="comic-status-contain_left">
+        <div class="comic-status-contain_left-top">
           <div>
             <i></i>
-            <span class="title">番剧动态</span>
-            <span>有新动态</span>
-            <span>有最新投稿</span>
+            <span class="title">漫画</span>
+            <span>人气推荐</span>
+            <span>今日更新推荐</span>
           </div>
           <div>
             <a href="#">更多》</a>
           </div>
         </div>
-        <div class="drama-status-contain_left-body">
-          <div v-for="n in 8" v-bind:key="n" class="drama-status-contain_pos">
-            <div class="drama-status-left-img">
+        <div class="comic-status-contain_left-body">
+          <div v-for="n in 8" v-bind:key="n" class="comic-status-contain_pos">
+            <div class="comic-status-left-img">
               <image-item :item="item" :num="n" v-bind:key="n" @maskChange="changeDes"></image-item>
             </div>
-            <div class="drama-status-left-img-desc" v-show="isShowDes[n-1]">
+            <div class="comic-status-left-img-desc" v-show="isShowDes[n-1]">
               <span>
                 <i class="i-fir"></i>48.5万
               </span>
@@ -29,14 +29,22 @@
           </div>
         </div>
       </div>
-      <div class="drama-status-contain_right">
-        <div class="drama-status-contain_right-top">
+      <div class="comic-status-contain_right">
+        <div class="comic-status-contain_right-top">
           <p>
-            <span>特别推荐</span>
+            <span>排行</span>
+            <span :class="{'isActive': index == 1 }" @mouseenter="changeItems('1')">全部</span>
+            <span :class="{'isActive': index == 2 }" @mouseenter="changeItems('2')">原创</span>
           </p>
+          <div>
+            <select>
+              <option>三日</option>
+              <option>一周</option>
+            </select>
+          </div>
         </div>
-        <div class="drama-status-contain_right-body">
-          <drama-status-swiper></drama-status-swiper>
+        <div class="comic-status-contain_right-body">
+          <cartoon-list :items="items"></cartoon-list>
         </div>
       </div>
     </div>
@@ -49,7 +57,7 @@ import DramaStatusSwiper from './DramaStatusSwiper';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'DramaStatus',
+  name: 'ComicStatus',
   data () {
     return {
       item: {
@@ -127,28 +135,28 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.drama-status-contain {
+.comic-status-contain {
   width: 100%;
   height: 375px;
   margin: 0 0 30px 0;
   color: #000;
   text-align: left;
 
-  .drama-status-contain_logo {
+  .comic-status-contain_logo {
     height: 82px;
     margin-bottom: 20px;
   }
 
-  .drama-status-contain_content {
+  .comic-status-contain_content {
     width: 100%;
     height: 381px;
     display: flex;
     justify-content: space-between;
 
-    .drama-status-contain_left {
+    .comic-status-contain_left {
       width: 720px;
 
-      .drama-status-contain_left-top {
+      .comic-status-contain_left-top {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -211,7 +219,7 @@ export default {
         }
       }
 
-      .drama-status-contain_left-body {
+      .comic-status-contain_left-body {
         height: 336px;
         display: flex;
         flex-direction: row;
@@ -221,13 +229,13 @@ export default {
         div {
           position: relative;
 
-          .drama-status-left-img {
+          .comic-status-left-img {
             width: 160px;
             height: 148px;
             margin: 0 20px 20px 0;
           }
 
-          .drama-status-left-img-desc {
+          .comic-status-left-img-desc {
             position: absolute;
             left: 6px;
             bottom: 22px;
@@ -261,12 +269,12 @@ export default {
       }
     }
 
-    .drama-status-contain_right {
+    .comic-status-contain_right {
       width: 260px;
       height: 363px;
       margin-top: 5px;
 
-      .drama-status-contain_right-top {
+      .comic-status-contain_right-top {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -319,7 +327,7 @@ export default {
         }
       }
 
-      .drama-status-contain_right-body {
+      .comic-status-contain_right-body {
         width: 260px;
         margin-top: 20px;
         height: 268px;
