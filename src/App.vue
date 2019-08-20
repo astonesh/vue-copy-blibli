@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app" style="sc">
     <div class="top-bar_position">
       <topBar></topBar>
     </div>
@@ -28,12 +28,18 @@ export default {
     BottomBar
   },
   methods: {
-    testMe () {
-      // console.log('111');
+    srollWindow () {
+      var num = document.documentElement.scrollTop;
+      this.$store.dispatch('setHeightStatus', {
+        scrolltop: num
+      });
     },
     hideBottom (data) {
       this.isShowBottom = false;
     }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.srollWindow);
   }
 };
 </script>

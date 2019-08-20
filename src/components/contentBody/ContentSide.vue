@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { setInterval, clearInterval } from 'timers';
+import { mapState } from 'vuex';
 export default {
   name: 'ContentSide',
   data () {
@@ -34,9 +34,14 @@ export default {
         { title: '国创', id: 3 },
         { title: '漫画', id: 4 }
       ],
-      tagNum: 1,
+      // tagNum: 1,
       timer: null
     };
+  },
+  computed: {
+    ...mapState({
+      tagNum: state => state.scrollStatus.id
+    })
   },
   methods: {
     timerLogo (isIn) {
