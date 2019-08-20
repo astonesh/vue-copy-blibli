@@ -36,6 +36,9 @@ Vue.prototype.globalData = globalData;
 Object.keys(myFilter).forEach(key => Vue.filter(key, myFilter[key]));
 
 Vue.config.productionTip = false;
+Vue.config.devtools = true
+Vue.config.performance = process.env.NODE_ENV !== 'production'
+// Vue.config.performance = true;
 
 /* eslint-disable no-new */
 new Vue({

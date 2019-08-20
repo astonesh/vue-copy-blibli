@@ -1,5 +1,8 @@
 <template>
   <div class="main-body">
+    <div class="main-body-side">
+      <content-side></content-side>
+    </div>
     <div>
       <swiper-contain></swiper-contain>
     </div>
@@ -31,6 +34,7 @@ import Drama from '../sev/Drama';
 import DramaStatus from '../sev/DramaStatus';
 import DomesticOpera from '../sev/DomesticOpera';
 import Comic from '../sev/Comic';
+import ContentSide from './ContentSide';
 
 export default {
   name: 'ContentBodyMain',
@@ -44,12 +48,19 @@ export default {
     Drama,
     DramaStatus,
     DomesticOpera,
-    Comic
+    Comic,
+    ContentSide
   }
 };
 </script>
 <style scoped>
 .main-body {
   position: relative;
+}
+.main-body-side {
+  position: absolute;
+  width: 50px;
+  top: 0;
+  right: -70px;
 }
 </style>

@@ -17,7 +17,7 @@ import TopBar from './components/banner/TopBar';
 import BottomBar from './components/banner/BottomBar';
 
 export default {
-  name: 'App',
+  name: 'app',
   data () {
     return {
       isShowBottom: true

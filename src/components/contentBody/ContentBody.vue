@@ -35,7 +35,6 @@ export default {
   width: 980px;
   display: inline-block;
   margin: 0 auto;
-  overflow: hidden;
   z-index: 90;
 }
 </style>
