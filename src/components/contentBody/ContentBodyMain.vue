@@ -53,10 +53,12 @@ export default {
     ContentSide
   },
   methods: {
-    isCanScroll ($elementHeight, $scrollTop) {
+    isCanScroll ($elementHeight, $scrollTop, $nextElementHeight) {
       return (
-        parseInt($scrollTop) - parseInt($elementHeight) <= 10 &&
-        parseInt($scrollTop) - parseInt($elementHeight) >= -10
+        parseInt($elementHeight) < parseInt($scrollTop) &&
+        (!$nextElementHeight ||
+          (!!$nextElementHeight &&
+            parseInt($nextElementHeight) > parseInt($scrollTop)))
       );
     },
     scrollToId (n) {
@@ -65,15 +67,17 @@ export default {
       let $cartoon = this.$refs['cartoon']['offsetTop'];
       let $drama = this.$refs['drama']['offsetTop'];
       let $comic = this.$refs['comic']['offsetTop'];
-      if (this.isCanScroll($mainBody + $promotion, n)) {
+      if (this.isCanScroll($mainBody + $promotion, n, $mainBody + $cartoon)) {
         this.$store.dispatch('setIdStatus', {
           id: 1
         });
-      } else if (this.isCanScroll($mainBody + $cartoon, n)) {
+      } else if (
+        this.isCanScroll($mainBody + $cartoon, n, $mainBody + $drama)
+      ) {
         this.$store.dispatch('setIdStatus', {
           id: 2
         });
-      } else if (this.isCanScroll($mainBody + $drama, n)) {
+      } else if (this.isCanScroll($mainBody + $drama, n, $mainBody + $comic)) {
         this.$store.dispatch('setIdStatus', {
           id: 3
         });
@@ -83,7 +87,7 @@ export default {
         });
       } else {
         this.$store.dispatch('setIdStatus', {
-          id: 2
+          id: 0
         });
       }
     }
@@ -96,7 +100,6 @@ export default {
   mounted () {},
   watch: {
     scrolltop (n, o) {
-      console.log(n);
       this.scrollToId(n);
     }
   }

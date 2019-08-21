@@ -15,7 +15,6 @@ const scrollStatus = {
       await commit(SCROLL_STATUS_HEIGHT, res);
     },
     async setIdStatus ({ commit, state }, params) {
-      console.log(params.id);
       const res = {
         id: params.id
       };
