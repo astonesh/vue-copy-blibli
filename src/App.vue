@@ -28,18 +28,18 @@ export default {
     BottomBar
   },
   methods: {
-    srollWindow () {
+    hideBottom (data) {
+      this.isShowBottom = false;
+    },
+    interScroll() {
       var num = document.documentElement.scrollTop;
       this.$store.dispatch('setHeightStatus', {
         scrolltop: num
       });
-    },
-    hideBottom (data) {
-      this.isShowBottom = false;
-    }
+    }  
   },
   mounted () {
-    window.addEventListener('scroll', this.srollWindow);
+    window.addEventListener('scroll', this._.debounce(this.interScroll, 10));
   }
 };
 </script>

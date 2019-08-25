@@ -112,7 +112,8 @@ export default {
 .main-body-side {
   position: fixed;
   width: 50px;
-  top: 0;
-  right: 0px;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 510px;
 }
 </style>

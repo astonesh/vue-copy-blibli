@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 export default {
   // install方法是必需的
   // 包含两个参数：Vue 构造器，一个可选的选项对象
@@ -15,5 +17,6 @@ export default {
     Vue.prototype.copyll = function (item) {
       return JSON.parse(JSON.stringify(item));
     }
+    Vue.prototype._ = _;
   }
 };
